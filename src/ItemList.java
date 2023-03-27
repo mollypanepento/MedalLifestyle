@@ -130,6 +130,14 @@ public class ItemList {
 	public void add(Item item) {
 		ItemList.add(item);
 	}
+	
+	public Item getItem(String name) {
+		for(int i=0; i<ItemList.size();i++) {
+			if(ItemList.get(i).getName()==name);
+				return ItemList.get(i);
+		}
+		return null;
+	}
 }
 		
 	
