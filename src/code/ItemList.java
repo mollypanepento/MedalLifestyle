@@ -120,7 +120,25 @@ public class ItemList {
 		ItemList.add(KitchenContainers);
 		ItemList.add(CasseroleDish);
 
-
+		for(Item1 i : ItemList) {
+			if(i.getDepartment().equals("clothes")) {
+				clothes.add(i);
+			}else if(i.getDepartment().equals("kithen")) {
+				kitchen.add(i);
+			}else if(i.getDepartment().equals("jewelry")) {
+				jewelry.add(i);
+			}else if(i.getDepartment().equals("skincare")) {
+				skincare.add(i);
+			}else if(i.getDepartment().equals("fitness")) {
+				fitness.add(i);
+			}else if(i.getDepartment().equals("furniture")) {
+				furniture.add(i);
+			}else if(i.getDepartment().equals("stationary")) {
+				stationary.add(i);
+			}else if(i.getDepartment().equals("electronics")) {
+				electronics.add(i);
+			}
+		}
 
 
 		
