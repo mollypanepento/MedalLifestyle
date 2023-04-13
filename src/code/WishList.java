@@ -1,3 +1,5 @@
+//NOT VISUALLY APPEALING YET, BUT EVERTHING WORKS EXCEPT ADD TO CART
+
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
