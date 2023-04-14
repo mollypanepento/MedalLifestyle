@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ActionEvent;
@@ -51,13 +53,29 @@ public class WishList extends JPanel implements MouseListener {
     private JButton b;
     
 	public static void main(String[] args) {
+		//bigPane
+		JPanel bigPane = new JPanel();
+		bigPane.setLayout(new GridBagLayout());
+		GridBagConstraints c4 = new GridBagConstraints();
+		c4.fill = GridBagConstraints.HORIZONTAL;
+		
+		//header
+		JPanel head = new JPanel();
+		Header h = new Header();
+		head = h.createHeader();
+		c4.fill = GridBagConstraints.HORIZONTAL;
+		c4.weightx = 0.5;
+		c4.gridwidth = 6;
+		c4.gridx = 0;
+		c4.gridy = 0;
+		bigPane.add(head, c4);
+		
     	//Create wishlist JPanel
     	WishList wlist = new WishList();
         wlist.setLayout(new BoxLayout(wlist,BoxLayout.PAGE_AXIS));
         wlist.setBackground(Color.WHITE);
         wlist.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         wlist.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
- 
         //create scrollbar
         JScrollPane scrollbar = new JScrollPane(wlist,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollbar.setWheelScrollingEnabled(true);
@@ -71,7 +89,14 @@ public class WishList extends JPanel implements MouseListener {
         frame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 
        // frame.setContentPane(scrollbar);
-        frame.add(scrollbar);
+        c4.fill = GridBagConstraints.HORIZONTAL;
+		c4.ipady = 750;
+		c4.weightx = 0.5;
+		c4.gridwidth = 6;
+		c4.gridx = 0;
+		c4.gridy = 2;
+        bigPane.add(scrollbar, c4);
+        frame.setContentPane(bigPane);
         
         JLabel wishlist = new JLabel("My Wishlist");
         wishlist.setFont(new Font("Tajawal", Font.PLAIN, 36));
@@ -185,6 +210,9 @@ public class WishList extends JPanel implements MouseListener {
 		}
 	}
 }
+
+
+
 
 
 
