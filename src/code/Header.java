@@ -181,7 +181,8 @@ public class Header implements ActionListener{
 		 contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		 contentPane.add(smallPane, BorderLayout.CENTER);
 		 contentPane.add(navPane, BorderLayout.PAGE_END);
-		 
+		 contentPane.setPreferredSize(new Dimension(1600,150)); 
+		
 		 return contentPane;
 
 		 /* Add content pane to frame */
