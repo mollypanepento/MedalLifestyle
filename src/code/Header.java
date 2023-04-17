@@ -23,7 +23,7 @@ public class Header implements ActionListener{
 	JLabel logo;
 	JTextField search;
 	JButton clothes, electronics, fitness, furniture, jewelry, kitchen, skinCare, stationary;
-	JButton submit, signIn, purchase, cart;
+	JButton submit, wishlist, purchase, cart;
 	Color lavender = new Color(183,189,231);
 	
 	public Header() {
@@ -41,7 +41,7 @@ public class Header implements ActionListener{
 		 smallPane.setBackground(lavender);
 		 
 		 /* Create a label that shows the logo */
-		 logo = new JLabel(new ImageIcon("src/MEDALlogo.PNG"));
+		 logo = new JLabel(new ImageIcon("src/logoSmall.PNG"));
 		 smallPane.add(logo);
 		 //smallPane.add(Box.createRigidArea(new Dimension(0,5)));
 		 
@@ -73,16 +73,16 @@ public class Header implements ActionListener{
 		 smallPane.add(submit);
 		 
 		 //create signIn button
-		 signIn = new JButton("Hello, sign in!");
-		 signIn.setBackground(lavender);
-		 signIn.setForeground(Color.black);
-		 signIn.setBorder(BorderFactory.createLineBorder(Color.black));
-		 signIn.setBorder(BorderFactory.createEmptyBorder(20,85,20, 85));
-		 signIn.addActionListener(this);
-		 smallPane.add(signIn);
+		 wishlist = new JButton("Wishlist");
+		 wishlist.setBackground(lavender);
+		 wishlist.setForeground(Color.black);
+		 wishlist.setBorder(BorderFactory.createLineBorder(Color.black));
+		 wishlist.setBorder(BorderFactory.createEmptyBorder(20,85,20, 85));
+		 wishlist.addActionListener(this);
+		 smallPane.add(wishlist);
 		 
 		 //create returns button
-		 purchase = new JButton("Make Purchase");
+		 purchase= new JButton("Make Purchase");
 		 purchase.setBackground(lavender);
 		 purchase.setForeground(Color.black);
 		 purchase.setBorder(BorderFactory.createLineBorder(Color.black));
@@ -181,8 +181,8 @@ public class Header implements ActionListener{
 		 contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		 contentPane.add(smallPane, BorderLayout.CENTER);
 		 contentPane.add(navPane, BorderLayout.PAGE_END);
-		 contentPane.setPreferredSize(new Dimension(1600,150)); 
-		
+		 contentPane.setPreferredSize(new Dimension(1600,150));
+		 
 		 return contentPane;
 
 		 /* Add content pane to frame */
@@ -204,7 +204,7 @@ public class Header implements ActionListener{
 			  	kitchen.setBackground(lavender);
 			  	skinCare.setBackground(lavender);
 			  	stationary.setBackground(lavender);
-			  	signIn.setBackground(lavender);
+			  	wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -218,7 +218,7 @@ public class Header implements ActionListener{
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -233,7 +233,7 @@ public class Header implements ActionListener{
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -248,7 +248,7 @@ public class Header implements ActionListener{
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -263,7 +263,7 @@ public class Header implements ActionListener{
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -278,7 +278,7 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  skinCare.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -293,7 +293,7 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  kitchen.setBackground(lavender);
 			  stationary.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  	purchase.setBackground(lavender);
 			  	cart.setBackground(lavender);
 			  	submit.setBackground(lavender);
@@ -308,7 +308,7 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  purchase.setBackground(lavender);
 			  cart.setBackground(lavender);
 			  submit.setBackground(lavender);
@@ -323,12 +323,12 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  purchase.setBackground(lavender);
 			  cart.setBackground(lavender);
 		  }
-		  else if(eventName.contentEquals("Hello, sign in!")) {
-			  signIn.setBackground(Color.WHITE);
+		  else if(eventName.contentEquals("Wishlist")) {
+			  wishlist.setBackground(Color.WHITE);
 			  stationary.setBackground(lavender);
 			  electronics.setBackground(lavender);
 			  clothes.setBackground(lavender);
@@ -351,10 +351,10 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  cart.setBackground(lavender);
 			  submit.setBackground(lavender);
-			  new Info();
+			  //new Info();
 		  }
 		  else {
 			  stationary.setBackground(lavender);
@@ -365,7 +365,7 @@ public class Header implements ActionListener{
 			  jewelry.setBackground(lavender);
 			  kitchen.setBackground(lavender);
 			  skinCare.setBackground(lavender);
-			  signIn.setBackground(lavender);
+			  wishlist.setBackground(lavender);
 			  purchase.setBackground(lavender);
 			  submit.setBackground(lavender);
 		  }
