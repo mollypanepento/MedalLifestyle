@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 	
 public class BestSellers {
-	public static void main(String[]args)
+	public BestSellers()
 	{
 		//make new item objects of each item and then it will be easier
 		//to connect to new page after button click that item
@@ -42,7 +42,7 @@ public class BestSellers {
 	contentPane.setLayout(new BoxLayout(contentPane,
 	BoxLayout.PAGE_AXIS));
 	contentPane.setBackground(Color.WHITE);
-	contentPane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+	contentPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
 		 
 	//Create a scrollbar using JScrollPane and add panel into it's viewport
 	//Set vertical and horizontal scrollbar always show
@@ -588,6 +588,20 @@ public class BestSellers {
 
 	//Make JFrame visible. So we can see it.
 	frame.setVisible(true);
+
+	}
+	
+	private static void runGUI() {
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		
+		BestSellers bs = new BestSellers();
+	}
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				runGUI();
+			}
+		});
 
 	}
 }
