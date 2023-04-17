@@ -2,17 +2,21 @@ package onlineStore;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
+import javax.imageio.*;
 
 import javax.swing.*;
 
-public class Store implements ActionListener{
+public class Store1 extends JPanel implements ActionListener {
 	public JFrame frame;
 	JPanel contentPane, itemPane, sortPane, bigPane;
 	JLabel heart, sort, price, discount, color;
@@ -20,11 +24,13 @@ public class Store implements ActionListener{
 	JButton clear, enter; 
 	ButtonGroup group, group1; 
 	Color lavender = new Color(183,189,231);
-	Item shirt, shirt2, shirt3, shirt4, shirt5, shirt6; 
-	ArrayList<Item> clothes = new ArrayList<Item>(); 
 	Header h = new Header(); 
+	ArrayList<Item1> department;
+	ItemList itemList = new ItemList(); 
 	
-	public Store() {
+	public Store1(ArrayList<Item1> d) {
+		department = d; 
+		System.out.println("yay"+department.size());
 		frame = new JFrame("Clothes");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBackground(Color.white);
@@ -36,6 +42,7 @@ public class Store implements ActionListener{
 		bigPane = new JPanel();
 		bigPane.setBackground(Color.white);
 		bigPane.add(h.createHeader());
+		bigPane.add(new JLabel(department.get(0).getDepartment()));
 		bigPane.setLayout(new BoxLayout(bigPane, BoxLayout.Y_AXIS));
 		sort = new JLabel("Sort: ");
 		sortPane.add(sort);
@@ -74,25 +81,15 @@ public class Store implements ActionListener{
 		sortPane.add(clear);
 		
 		//create items pane
-		itemPane = new JPanel(new GridLayout(2,3, 10, 10));
+		itemPane = new JPanel(new GridLayout(0, 3));
 		itemPane.setBackground(Color.white);
 		heart = new JLabel(new ImageIcon("src/heart.PNG"));
-		shirt = new Item("src/cropTop.PNG", "Women's t-shirt", 20.00);
-		shirt2 = new Item("src/cropTop.PNG", "Women's t-shirt", 20.00);
-		shirt3 = new Item("src/cropTop.PNG", "Women's t-shirt", 20.00);
-		shirt4 = new Item("src/cropTop.PNG", "Women's t-shirt", 20.00);
-		shirt5 = new Item("src/cropTop.PNG", "Women's t-shirt", 20.00);
-		clothes.add(shirt);
-		clothes.add(shirt2);
-		clothes.add(shirt3);
-		clothes.add(shirt4);
-		clothes.add(shirt5);
-
-		itemPane.add(shirt.getItem());
-		itemPane.add(shirt2.getItem());
-		itemPane.add(shirt3.getItem());
-		itemPane.add(shirt4.getItem());
-		itemPane.add(shirt5.getItem());
+		
+		for(Item1 i : department) {
+			itemPane.add(i.showItem());
+			System.out.println(department.size());
+		}
+		
 		contentPane.add(itemPane);
 		bigPane.add(contentPane);
 		/* Add content pane to frame */
@@ -102,6 +99,8 @@ public class Store implements ActionListener{
 		frame.pack();
 		frame.setVisible(true);
 	}
+	
+
 	public JPanel showStorePage() {
 		return this.bigPane; 
 	} 
@@ -126,29 +125,43 @@ public class Store implements ActionListener{
 		}
 		  else if(eventName.equals("Sort")) {
 			  System.out.println(getSelectedButtonText(group));
+			  if(getSelectedButtonText(group).equals("Highest to Lowest")) {
+				 ArrayList<Item1> list = (ItemList.sortHighPrice(department));
+				 ItemList.printList(department);
+				 Store1 c = new Store1(list);
+			  }
+			  else if(getSelectedButtonText(group).equals("Lowest to Highest")) {
+				  Store1 d = new Store1(ItemList.sortLowPrice(department));
+			  }
+			 
 			  System.out.println(getSelectedButtonText(group1));
 		  }
-		  for(Item i: clothes) {
-			  if(eventName.equals(i.getName())) {
-				ItemPage show = new ItemPage(i);
-				frame.getContentPane().removeAll(); 
-				frame.getContentPane().add(show.showItemPage()); 
-				  
-			  }
-		  }	  
+		  
+//		  for(Item1 i: ItemList.clothes) {
+//			  if(eventName.equals(i.getName())) {
+//				ItemPage1 show = new ItemPage1(i);
+//				frame.getContentPane().removeAll(); 
+//				frame.getContentPane().add(show.showItemPage()); 
+//				  
+//			  }
+//		  }	  
 	}
 	
 	private static void runGUI() {
 		 JFrame.setDefaultLookAndFeelDecorated(true);
-		 Store c = new Store();
+		 ItemList.printList(ItemList.clothes);
+		 System.out.println(ItemList.clothes.size());
+		 Store1 c = new Store1(ItemList.clothes);
 	 }
 		 
 	 public static void main(String[] args) {
 	 /* Methods that create and show a GUI should be run from an event-dispatching thread */
 		 javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		//ItemList i = new ItemList(); 
 		 public void run() {
 			runGUI();
 		 }
 		});
+		 
 	 }
 }
