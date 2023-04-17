@@ -1,5 +1,3 @@
-//NOT VISUALLY APPEALING YET, BUT EVERTHING WORKS EXCEPT ADD TO CART
-
 import java.util.ArrayList;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -40,10 +38,10 @@ public class WishList extends JPanel implements MouseListener {
     private static final JViewport viewport = new JViewport();
     public static ItemList item = new ItemList();
     
-    private static Ellipse2D priceLowToHighOval = new Ellipse2D.Double(1200, 600, 100, 100);
-    private static Ellipse2D priceHighToLowOval = new Ellipse2D.Double(1400, 600, 100, 100);
-    private static Ellipse2D nameOval = new Ellipse2D.Double(1200, 400, 100, 100);
-    private static Ellipse2D departmentOval = new Ellipse2D.Double(1200, 200, 100, 100);
+    private static Ellipse2D priceLowToHighOval = new Ellipse2D.Double(100, 400, 100, 100);
+    private static Ellipse2D priceHighToLowOval = new Ellipse2D.Double(200, 400, 100, 100);
+    private static Ellipse2D nameOval = new Ellipse2D.Double(100, 300, 100, 100);
+    private static Ellipse2D departmentOval = new Ellipse2D.Double(100, 200, 100, 100);
     private static RoundRectangle2D[] deleteBars;
     private static RoundRectangle2D[] addBars;
     
@@ -64,6 +62,7 @@ public class WishList extends JPanel implements MouseListener {
 		Header h = new Header();
 		head = h.createHeader();
 		c4.fill = GridBagConstraints.HORIZONTAL;
+		c4.ipady = 20;
 		c4.weightx = 0.5;
 		c4.gridwidth = 6;
 		c4.gridx = 0;
@@ -98,10 +97,7 @@ public class WishList extends JPanel implements MouseListener {
         bigPane.add(scrollbar, c4);
         frame.setContentPane(bigPane);
         
-        JLabel wishlist = new JLabel("My Wishlist");
-        wishlist.setFont(new Font("Tajawal", Font.PLAIN, 36));
-        wishlist.setBorder(BorderFactory.createEmptyBorder(0,0,50,0));
-        wlist.add(wishlist);
+ 
         
 
         frame.pack();
@@ -142,10 +138,12 @@ public class WishList extends JPanel implements MouseListener {
 		fillList(deleteBars);
 		fillList(addBars);
         super.paintComponent(g);
+        
         Graphics2D g2d = (Graphics2D) g;
         this.addMouseListener(this);
         
         for(int i=0; i<WishList.size(); i++) {
+        	g2d.setFont(new Font("Cambria",1,16));
         	g.setColor(Color.black);
         	//Full item border
             g2d.drawRoundRect(410, 50+i*150, 650, 125, 50, 30);
@@ -165,15 +163,21 @@ public class WishList extends JPanel implements MouseListener {
             g2d.drawString(WishList.get(i).getName(), 550, 80+i*150);
             g2d.drawString("$"+WishList.get(i).getPrice(), 560, 130+i*150);
             //g.setColor(Color.LIGHT_GRAY);
-            g2d.drawString("Price", 1200, 600);
-            g2d.drawString("Name", 1200, 400);
-            g2d.drawString("Department", 1200, 200);
-            g2d.drawString(""+WishList.size(), 1500, 100);
+            
+            //Filters
+            //g2d.setFont();
+            g2d.drawString("Filter By:", 50, 150);
+            g2d.drawString("Price", 75, 400);
+            g2d.drawString("Name", 75, 300);
+            g2d.drawString("Department", 75, 200);
             g.setColor(PURP);
             g2d.fill(priceHighToLowOval);
             g2d.fill(priceLowToHighOval);
             g2d.fill(nameOval);
             g2d.fill(departmentOval);
+            g2d.setFont(new Font("Cambria",1,36));
+            g2d.setColor(Color.BLACK);
+            g2d.drawString("My WishList ("+WishList.size()+" items)", 20,80);
         }
         
         
@@ -210,9 +214,6 @@ public class WishList extends JPanel implements MouseListener {
 		}
 	}
 }
-
-
-
 
 
 
