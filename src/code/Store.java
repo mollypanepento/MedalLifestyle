@@ -18,7 +18,7 @@ import javax.swing.*;
 
 public class Store1 extends JPanel implements ActionListener {
 	public JFrame frame;
-	JPanel contentPane, itemPane, sortPane, bigPane;
+	JPanel contentPane, itemPane, sortPane, bigPane, sortedItemPane;
 	JLabel heart, sort, price, discount, color;
 	JRadioButton highLow, lowHigh, sale, freeShip;
 	JButton clear, enter; 
@@ -30,10 +30,12 @@ public class Store1 extends JPanel implements ActionListener {
 	
 	public Store1(ArrayList<Item1> d) {
 		department = d; 
-		System.out.println("yay"+department.size());
 		frame = new JFrame("Clothes");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBackground(Color.white);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		frame.setUndecorated(true);
+		frame.setTitle("Medal Lifestyle");
 		
 		//create sort pane
 		sortPane = new JPanel();
@@ -87,8 +89,10 @@ public class Store1 extends JPanel implements ActionListener {
 		
 		for(Item1 i : department) {
 			itemPane.add(i.showItem());
-			System.out.println(department.size());
 		}
+		
+		sortedItemPane = new JPanel(new GridLayout(0, 3));
+		sortedItemPane.setBackground(Color.white);
 		
 		contentPane.add(itemPane);
 		bigPane.add(contentPane);
@@ -97,6 +101,7 @@ public class Store1 extends JPanel implements ActionListener {
 		 
 		/* Size and then display the frame. */
 		frame.pack();
+		frame.setSize(1600, 900);
 		frame.setVisible(true);
 	}
 	
@@ -126,12 +131,27 @@ public class Store1 extends JPanel implements ActionListener {
 		  else if(eventName.equals("Sort")) {
 			  System.out.println(getSelectedButtonText(group));
 			  if(getSelectedButtonText(group).equals("Highest to Lowest")) {
-				 ArrayList<Item1> list = (ItemList.sortHighPrice(department));
-				 ItemList.printList(department);
-				 Store1 c = new Store1(list);
+				  Store1 d = new Store1(ItemList.sortHighPrice(department));
+				  
+//				 ArrayList<Item1> listHigh = (ItemList.sortHighPrice(department));
+//				 for(Item1 i : listHigh) {
+//						sortedItemPane.add(i.showItem());
+//					}
+				 //Store1 c = new Store1(list);
+//				 System.out.println(frame.getContentPane().getName());
+//				 frame.getContentPane().remove(itemPane);
+//				 frame.getContentPane().add(sortedItemPane);
+//				 frame.validate();
+				 
 			  }
 			  else if(getSelectedButtonText(group).equals("Lowest to Highest")) {
 				  Store1 d = new Store1(ItemList.sortLowPrice(department));
+//				  ArrayList<Item1> listLow = (ItemList.sortLowPrice(department));
+//				  itemPane.removeAll(); 
+//					 for(Item1 i : listLow) {
+//							itemPane.add(i.showItem());
+//							//System.out.println(department.size());
+//						}
 			  }
 			 
 			  System.out.println(getSelectedButtonText(group1));
@@ -149,9 +169,9 @@ public class Store1 extends JPanel implements ActionListener {
 	
 	private static void runGUI() {
 		 JFrame.setDefaultLookAndFeelDecorated(true);
-		 ItemList.printList(ItemList.clothes);
-		 System.out.println(ItemList.clothes.size());
-		 Store1 c = new Store1(ItemList.clothes);
+//		 ItemList.printList(ItemList.clothes);
+//		 System.out.println(ItemList.clothes.size());
+		 Store1 c = new Store1(ItemList.skincare);
 	 }
 		 
 	 public static void main(String[] args) {
