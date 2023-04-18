@@ -30,7 +30,7 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 public class WishList extends JPanel implements MouseListener {
-	private static final int WIDTH = 1500;
+	private static final int WIDTH = 1600;
     private static final int HEIGHT = 10000;
     private static final int FRAME_WIDTH = 1600;
     private static final int FRAME_HEIGHT = 900;
@@ -50,7 +50,7 @@ public class WishList extends JPanel implements MouseListener {
     public static ArrayList<Item> WishList = ItemList.ItemList;
     private JButton b;
     
-	public static void main(String[] args) {
+	public WishList() {
 		//bigPane
 		JPanel bigPane = new JPanel();
 		bigPane.setLayout(new GridBagLayout());
@@ -70,13 +70,13 @@ public class WishList extends JPanel implements MouseListener {
 		bigPane.add(head, c4);
 		
     	//Create wishlist JPanel
-    	WishList wlist = new WishList();
-        wlist.setLayout(new BoxLayout(wlist,BoxLayout.PAGE_AXIS));
-        wlist.setBackground(Color.WHITE);
-        wlist.setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        wlist.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+    	//WishList this = new WishList();
+        this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+        this.setBackground(Color.WHITE);
+        this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
         //create scrollbar
-        JScrollPane scrollbar = new JScrollPane(wlist,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        JScrollPane scrollbar = new JScrollPane(this,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
         scrollbar.setWheelScrollingEnabled(true);
         scrollbar.getVerticalScrollBar().setUnitIncrement(20);
 
@@ -170,13 +170,16 @@ public class WishList extends JPanel implements MouseListener {
             g2d.drawString("Price", 75, 400);
             g2d.drawString("Name", 75, 300);
             g2d.drawString("Department", 75, 200);
+            
             g.setColor(PURP);
             g2d.fill(priceHighToLowOval);
             g2d.fill(priceLowToHighOval);
             g2d.fill(nameOval);
             g2d.fill(departmentOval);
-            g2d.setFont(new Font("Cambria",1,36));
             g2d.setColor(Color.BLACK);
+            g2d.drawString("Low to High",(int)priceLowToHighOval.getX()+5, (int)priceLowToHighOval.getY()+50);
+            g2d.drawString("High to Low",(int)priceHighToLowOval.getX()+5, (int)priceHighToLowOval.getY()+50);
+            g2d.setFont(new Font("Cambria",1,36));
             g2d.drawString("My WishList ("+WishList.size()+" items)", 20,80);
         }
         
@@ -212,6 +215,19 @@ public class WishList extends JPanel implements MouseListener {
 		for(int i=0; i<list.length; i++) {
 			list[i] = new RoundRectangle2D.Double(800, 110+i*150, 236,29,30,10);
 		}
+	}
+	
+	private static void runGUI() {
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		WishList wlist = new WishList();
+	}
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				runGUI();
+			}
+		});
+
 	}
 }
 
