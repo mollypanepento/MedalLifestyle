@@ -2,6 +2,7 @@ package onlineStore;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
-import javax.imageio.*;
+import javax.swing.JScrollPane; 
 
 import javax.swing.*;
 
@@ -43,7 +44,10 @@ public class Store1 extends JPanel implements ActionListener {
 		sortPane.setBackground(Color.white);
 		bigPane = new JPanel();
 		bigPane.setBackground(Color.white);
-		bigPane.add(h.createHeader());
+		JPanel head = h.createHeader();
+		head.setPreferredSize(new Dimension(1600,150));
+
+		bigPane.add(head);
 		bigPane.add(new JLabel(department.get(0).getDepartment()));
 		bigPane.setLayout(new BoxLayout(bigPane, BoxLayout.Y_AXIS));
 		sort = new JLabel("Sort: ");
@@ -106,10 +110,10 @@ public class Store1 extends JPanel implements ActionListener {
 	}
 	
 
-	public JPanel showStorePage() {
-		return this.bigPane; 
-	} 
-	
+////	public JPanel showStorePage() {
+////		return this.bigPane; 
+////	} 
+//	
 	public String getSelectedButtonText(ButtonGroup buttonGroup) {
         for (Enumeration<AbstractButton> buttons = buttonGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();
