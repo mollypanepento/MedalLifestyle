@@ -14,6 +14,7 @@ import java.util.Enumeration;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JScrollPane; 
+import javax.imageio.*;
 
 import javax.swing.*;
 
@@ -149,7 +150,7 @@ public class Store1 extends JPanel implements ActionListener {
 				 
 			  }
 			  else if(getSelectedButtonText(group).equals("Lowest to Highest")) {
-				  Store1 d = new Store1(ItemList.sortLowPrice(department));
+				  Store1 d2 = new Store1(ItemList.sortLowPrice(department));
 //				  ArrayList<Item1> listLow = (ItemList.sortLowPrice(department));
 //				  itemPane.removeAll(); 
 //					 for(Item1 i : listLow) {
@@ -176,6 +177,7 @@ public class Store1 extends JPanel implements ActionListener {
 //		 ItemList.printList(ItemList.clothes);
 //		 System.out.println(ItemList.clothes.size());
 		 Store1 c = new Store1(ItemList.skincare);
+		 
 	 }
 		 
 	 public static void main(String[] args) {
