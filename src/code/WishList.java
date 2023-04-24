@@ -36,7 +36,8 @@ public class WishList extends JPanel implements MouseListener {
     private static final int FRAME_HEIGHT = 900;
     private static final Color PURP = new Color(203, 205, 247);
     private static final JViewport viewport = new JViewport();
-    public static ItemList item = new ItemList();
+    private static ItemList item = new ItemList();
+    //public static  JFrame frame = new JFrame();
     
     private static Ellipse2D priceLowToHighOval = new Ellipse2D.Double(100, 400, 100, 100);
     private static Ellipse2D priceHighToLowOval = new Ellipse2D.Double(200, 400, 100, 100);
@@ -44,10 +45,11 @@ public class WishList extends JPanel implements MouseListener {
     private static Ellipse2D departmentOval = new Ellipse2D.Double(100, 200, 100, 100);
     private static RoundRectangle2D[] deleteBars;
     private static RoundRectangle2D[] addBars;
+    private Header h;
     
      
     
-    public static ArrayList<Item> WishList = ItemList.ItemList;
+    public static ArrayList<Item> WishList = new ArrayList<Item>();
     private JButton b;
     
 	public WishList() {
@@ -59,7 +61,7 @@ public class WishList extends JPanel implements MouseListener {
 		
 		//header
 		JPanel head = new JPanel();
-		Header h = new Header();
+		h = new Header();
 		head = h.createHeader();
 		c4.fill = GridBagConstraints.HORIZONTAL;
 		c4.ipady = 20;
@@ -82,10 +84,11 @@ public class WishList extends JPanel implements MouseListener {
 
         
         
-        JFrame frame = new JFrame();
-        frame.setTitle("WishList");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+        //JFrame frame = new JFrame();
+        Header.frame = new JFrame();
+        Header.frame.setTitle("WishList");
+        Header.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Header.frame.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 
        // frame.setContentPane(scrollbar);
         c4.fill = GridBagConstraints.HORIZONTAL;
@@ -95,13 +98,13 @@ public class WishList extends JPanel implements MouseListener {
 		c4.gridx = 0;
 		c4.gridy = 2;
         bigPane.add(scrollbar, c4);
-        frame.setContentPane(bigPane);
+        Header.frame.setContentPane(bigPane);
         
  
         
 
-        frame.pack();
-        frame.setVisible(true);
+        Header.frame.pack();
+        Header.frame.setVisible(true);
     
     }
 	
@@ -141,9 +144,26 @@ public class WishList extends JPanel implements MouseListener {
         
         Graphics2D g2d = (Graphics2D) g;
         this.addMouseListener(this);
+      //Filters
+        g2d.setFont(new Font("Cambria",1,16));
+        g2d.drawString("Filter By:", 50, 150);
+        g2d.drawString("Price", 75, 400);
+        g2d.drawString("Name", 75, 300);
+        g2d.drawString("Department", 75, 200);
+        
+        g.setColor(PURP);
+        g2d.fill(priceHighToLowOval);
+        g2d.fill(priceLowToHighOval);
+        g2d.fill(nameOval);
+        g2d.fill(departmentOval);
+        g2d.setColor(Color.BLACK);
+        g2d.drawString("Low to High",(int)priceLowToHighOval.getX()+5, (int)priceLowToHighOval.getY()+50);
+        g2d.drawString("High to Low",(int)priceHighToLowOval.getX()+5, (int)priceHighToLowOval.getY()+50);
+        g2d.setFont(new Font("Cambria",1,36));
+        g2d.drawString("My WishList ("+WishList.size()+" items)", 20,80);
         
         for(int i=0; i<WishList.size(); i++) {
-        	g2d.setFont(new Font("Cambria",1,16));
+        	
         	g.setColor(Color.black);
         	//Full item border
             g2d.drawRoundRect(410, 50+i*150, 650, 125, 50, 30);
@@ -164,23 +184,7 @@ public class WishList extends JPanel implements MouseListener {
             g2d.drawString("$"+WishList.get(i).getPrice(), 560, 130+i*150);
             //g.setColor(Color.LIGHT_GRAY);
             
-            //Filters
-            //g2d.setFont();
-            g2d.drawString("Filter By:", 50, 150);
-            g2d.drawString("Price", 75, 400);
-            g2d.drawString("Name", 75, 300);
-            g2d.drawString("Department", 75, 200);
             
-            g.setColor(PURP);
-            g2d.fill(priceHighToLowOval);
-            g2d.fill(priceLowToHighOval);
-            g2d.fill(nameOval);
-            g2d.fill(departmentOval);
-            g2d.setColor(Color.BLACK);
-            g2d.drawString("Low to High",(int)priceLowToHighOval.getX()+5, (int)priceLowToHighOval.getY()+50);
-            g2d.drawString("High to Low",(int)priceHighToLowOval.getX()+5, (int)priceHighToLowOval.getY()+50);
-            g2d.setFont(new Font("Cambria",1,36));
-            g2d.drawString("My WishList ("+WishList.size()+" items)", 20,80);
         }
         
         
