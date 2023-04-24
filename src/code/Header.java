@@ -18,7 +18,7 @@ import javax.swing.JTextField;
 
 
 public class Header implements ActionListener{
-	JFrame frame;
+	public static JFrame frame;
 	JPanel contentPane, smallPane, navPane;
 	JLabel logo;
 	JTextField search;
@@ -41,7 +41,7 @@ public class Header implements ActionListener{
 		 smallPane.setBackground(lavender);
 		 
 		 /* Create a label that shows the logo */
-		 logo = new JLabel(new ImageIcon("src/logoSmall.PNG"));
+		 logo = new JLabel(new ImageIcon("logoSmall.PNG"));
 		 smallPane.add(logo);
 		 //smallPane.add(Box.createRigidArea(new Dimension(0,5)));
 		 
@@ -72,14 +72,22 @@ public class Header implements ActionListener{
 		 submit.addActionListener(this);
 		 smallPane.add(submit);
 		 
-		 //create signIn button
+		 //create WishList button
 		 wishlist = new JButton("Wishlist");
 		 wishlist.setBackground(lavender);
 		 wishlist.setForeground(Color.black);
 		 wishlist.setBorder(BorderFactory.createLineBorder(Color.black));
 		 wishlist.setBorder(BorderFactory.createEmptyBorder(20,85,20, 85));
-		 wishlist.addActionListener(this);
 		 smallPane.add(wishlist);
+		 wishlist.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent ae) {
+					frame.dispose();
+					new WishList();
+				}
+			});
+		 
+		 
+
 		 
 		 //create returns button
 		 purchase= new JButton("Make Purchase");
@@ -91,7 +99,7 @@ public class Header implements ActionListener{
 		 smallPane.add(purchase);
 		 
 		 //create cart button
-		 cart = new JButton(new ImageIcon("src/cartSmall.png"));
+		 cart = new JButton(new ImageIcon("cartSmall.png"));
 		 cart.setBackground(lavender);
 		 smallPane.add(cart);
 		 
@@ -314,6 +322,7 @@ public class Header implements ActionListener{
 			  submit.setBackground(lavender);
 		  }
 		  else if(eventName.contentEquals("Submit")) {
+			  SearchPage.findList = ItemList.getItem(search.getText());
 			  submit.setBackground(Color.WHITE);
 			  stationary.setBackground(lavender);
 			  electronics.setBackground(lavender);
@@ -326,6 +335,7 @@ public class Header implements ActionListener{
 			  wishlist.setBackground(lavender);
 			  purchase.setBackground(lavender);
 			  cart.setBackground(lavender);
+			  
 		  }
 		  else if(eventName.contentEquals("Wishlist")) {
 			  wishlist.setBackground(Color.WHITE);
@@ -369,6 +379,18 @@ public class Header implements ActionListener{
 			  purchase.setBackground(lavender);
 			  submit.setBackground(lavender);
 		  }
+	}
+	private static void runGUI() {
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		Header head = new Header();
+	}
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				runGUI();
+			}
+		});
+
 	}
 	
 	
