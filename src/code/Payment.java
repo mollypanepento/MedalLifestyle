@@ -23,7 +23,8 @@ import javax.swing.JSeparator;
 import javax.swing.JTextField;
 
 public class Payment implements ActionListener{
-	JFrame frame;
+	Header h = new Header();
+	//JFrame frame;
 	JPanel bigPane, leftPane, rightPane, bottomPane, progressPane, shipPane, cardPane, pricePane;
 	JPanel head;
 	JLabel cart, info, pay, shipping, creditCard;
@@ -42,25 +43,25 @@ public class Payment implements ActionListener{
 	
 	public Payment() {
 		//create and set up frame 
-		frame = new JFrame("Checkout");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Header.frame = new JFrame("Checkout");
+		Header.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				
 		//create progress pane
 		progressPane = new JPanel();
 		progressPane.setLayout(new GridLayout(0,3));
 		progressPane.setBackground(Color.white);
 		progressPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
-		cart = new JLabel(new ImageIcon("src/heartCart.PNG"));
+		cart = new JLabel(new ImageIcon("heartCart.PNG"));
 		ImageIcon imageIconCart = new ImageIcon(
-						new ImageIcon("src/heartCart.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+						new ImageIcon("heartCart.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		cart.setIcon(imageIconCart);
-		info = new JLabel(new ImageIcon("src/heartInfo.PNG"));
+		info = new JLabel(new ImageIcon("heartInfo.PNG"));
 		ImageIcon imageIconInfo = new ImageIcon(
-						new ImageIcon("src/heartInfo.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+						new ImageIcon("heartInfo.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		info.setIcon(imageIconInfo);
-		pay = new JLabel(new ImageIcon("src/heartPay.PNG"));
+		pay = new JLabel(new ImageIcon("heartPay.PNG"));
 		ImageIcon imageIconPay = new ImageIcon(
-				new ImageIcon("src/heartPayEmpty.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+				new ImageIcon("heartPayEmpty.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		pay.setIcon(imageIconPay);
 
 		progressPane.add(cart);
@@ -219,14 +220,14 @@ public class Payment implements ActionListener{
 		c2.gridy = 3;
 		cardPane.add(secCode, c2);
 		
-		back = new JButton(new ImageIcon("src/backToInfo.PNG"));
+		back = new JButton(new ImageIcon("backToInfo.PNG"));
 		ImageIcon imageIconBack = new ImageIcon(
-				new ImageIcon("src/backToInfo.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+				new ImageIcon("backToInfo.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		back.setIcon(imageIconBack);
 		back.setBackground(Color.white);
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent ae) {
-				frame.dispose();
+				Header.frame.dispose();
 				new Info();
 			}
 		});
@@ -301,9 +302,9 @@ public class Payment implements ActionListener{
 		pricePane.add(totalPrice, c3);
 		//pricePane.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
 		
-		confirm = new JButton(new ImageIcon("src/confirm.PNG"));
+		confirm = new JButton(new ImageIcon("confirm.PNG"));
 		ImageIcon imageIconConfirm = new ImageIcon(
-				new ImageIcon("src/confirm.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
+				new ImageIcon("confirm.PNG").getImage().getScaledInstance(90, 90, Image.SCALE_DEFAULT));
 		confirm.setIcon(imageIconConfirm);
 		confirm.setBackground(Color.white);
 		confirm.addActionListener(new ActionListener() {
@@ -312,7 +313,7 @@ public class Payment implements ActionListener{
 				cardNameText = name.getText();
 				expText = exp.getText();
 				secCodeText = secCode.getText();
-				frame.dispose();
+				Header.frame.dispose();
 				new Confirmation();
 			}
 		});
@@ -324,7 +325,7 @@ public class Payment implements ActionListener{
 		GridBagConstraints c4 = new GridBagConstraints();
 		c4.fill = GridBagConstraints.HORIZONTAL;
 		
-		Header h = new Header();
+		h = new Header();
 		head = h.createHeader();
 		//header.setBackground(lavender);
 		//header.setLayout(new BoxLayout(header, BoxLayout.PAGE_AXIS));
@@ -380,12 +381,12 @@ public class Payment implements ActionListener{
 		bigPane.add(bottomPane, c4);
 		
 		//add content pane to frame
-		frame.setContentPane(bigPane);
+		Header.frame.setContentPane(bigPane);
 				
 		//Size and then display the frame
-		frame.pack();
-		frame.setVisible(true);
-		frame.setSize(1600,900);
+		Header.frame.pack();
+		Header.frame.setVisible(true);
+		Header.frame.setSize(1600,900);
 	}
 	
 
