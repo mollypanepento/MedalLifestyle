@@ -154,6 +154,13 @@ public class Cart {
 	public Integer getQuantity(Item item) {
 		return cartItems.get(item);
 	}
+	
+	public int getTotalAmtOfItems() {
+		int total = 0;
+		for(Integer i: cartItems.values()) {
+			total += i;
+		}
+		return total;
+	}
 
 }
-
