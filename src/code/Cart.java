@@ -162,5 +162,14 @@ public class Cart {
 		}
 		return total;
 	}
+	
+	public double getSubtotal() {
+		double subtotal = 0.0;
+		for(Item i: cartItems.keySet()) {
+			double itemSpend = i.getPrice()*getQuantity(i);
+			subtotal += itemSpend;
+		}
+		return subtotal;
+	}
 
 }
