@@ -8,8 +8,10 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -33,6 +35,7 @@ public class BestSellers {
 	j2, j3, k1, k2, k3, sc1, sc2, sc3, s1, s2, s3;
 	JPanel head= new JPanel();
 	Header h = new Header();
+	ItemList it = new ItemList();
 	GridBagConstraints c4 = new GridBagConstraints();
 	c4.fill = GridBagConstraints.HORIZONTAL;
 
@@ -84,22 +87,24 @@ public class BestSellers {
 	 cheart.setBorder(BorderFactory.createEmptyBorder(5, 40, 10, 20));
 	 cheart.setBackground(Color.WHITE);
 	 clothesPane.add(cheart);
-		 
-	  //icon 
-	 c1 = new JButton(new ImageIcon("src/croppedshirt.jfif"));
-	 c1.setSize(100,100);
+
+	 //icon 
+	 c1 = new JButton(new ImageIcon(it.bs.get(0).getImg()));
+	 c1.setBounds(0, 0, 50, 50);
 	 c1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 c1.setBackground(Color.WHITE);
 	 clothesPane.add(c1);
 	 c1.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Blue Crop Top (Women)"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Blue Crop Top (Women)"));
 		 }
 	 });
 	 
 	 c2 = new JButton(new ImageIcon("src/unisexshirts-nature.jfif"));
-	 c2.setSize(100,100);
 	 c2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 c2.setBackground(Color.WHITE);
 	 clothesPane.add(c2);
@@ -111,7 +116,6 @@ public class BestSellers {
 	 });
 	  
 	 c3 = new JButton(new ImageIcon("src/menssweater.jfif"));
-	 c3.setSize(100,100);
 	 c3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 c3.setBackground(Color.WHITE);
 	 clothesPane.add(c3);
@@ -185,22 +189,37 @@ public class BestSellers {
 		 
 	 // icon 
 	 e1 = new JButton(new ImageIcon("src/airpodcase.jfif"));
-	 e1.setSize(100,100);
 	 e1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e1.setBackground(Color.WHITE);
 	 electronicPane.add(e1);
+	 e1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 e2 = new JButton(new ImageIcon("src/headphones2.jfif"));
-	 e2.setSize(100,100);
 	 e2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e2.setBackground(Color.WHITE);
 	 electronicPane.add(e2);
+	 e2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 e3 = new JButton(new ImageIcon("src/iphonecase.jfif"));
-	 e3.setSize(100,100);
 	 e3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e3.setBackground(Color.WHITE);
 	 electronicPane.add(e3);
+	 e3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 
 	//button labels
@@ -217,16 +236,34 @@ public class BestSellers {
 		 air.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 air.setBackground(Color.WHITE);
 		 ebuttonPane.add(air);
+		 air.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent ae) {
+				 frame.dispose();
+				 //new page
+			 }
+		 });
 		 
 		 JButton hp = new JButton("Headphones");
 		 hp.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 hp.setBackground(Color.WHITE);
 		 ebuttonPane.add(hp);
+		 hp.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent ae) {
+				 frame.dispose();
+				 //new page
+			 }
+		 });
 		 
 		 JButton pc = new JButton("iPhone Case");
 		 pc.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 pc.setBackground(Color.WHITE);
 		 ebuttonPane.add(pc);
+		 pc.addActionListener(new ActionListener() {
+			 public void actionPerformed(ActionEvent ae) {
+				 frame.dispose();
+				 //new page
+			 }
+		 });
 	 
 	 
 	 /* fitness */
@@ -244,22 +281,37 @@ public class BestSellers {
 		 
 	 // icon 
 	 f1 = new JButton(new ImageIcon("src/resistancebands.jfif"));
-	 f1.setSize(100,100);
 	 f1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f1.setBackground(Color.WHITE);
 	 fitnessPane.add(f1);
+	 f1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 f2 = new JButton(new ImageIcon("src/motivationalbottle.jfif"));
-	 f2.setSize(100,100);
 	 f2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f2.setBackground(Color.WHITE);
 	 fitnessPane.add(f2);
+	 f2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 f3 = new JButton(new ImageIcon("src/matchingset.jfif"));
-	 f3.setSize(100,100);
 	 f3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f3.setBackground(Color.WHITE);
 	 fitnessPane.add(f3);
+	 f3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	//button labels
 	JPanel fbuttonPane = new JPanel();
@@ -275,16 +327,34 @@ public class BestSellers {
 	rb.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	rb.setBackground(Color.WHITE);
 	fbuttonPane.add(rb);
+	rb.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 		 
 	JButton mb = new JButton("Motivational Water Bottle");
 	mb.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	mb.setBackground(Color.WHITE);
 	fbuttonPane.add(mb);
+	mb.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 		 
 	JButton set = new JButton("Matching Active Set");
 	set.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	set.setBackground(Color.WHITE);
 	fbuttonPane.add(set);
+	set.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.dispose();
+			 //new page
+		 }
+	 });
 	 
 	 
 	 /* furniture */
@@ -302,19 +372,16 @@ public class BestSellers {
 		 
 	 // icon 
 	 fu1 = new JButton(new ImageIcon("src/lamp.jfif"));
-	 fu1.setSize(100,100);
 	 fu1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu1.setBackground(Color.WHITE);
 	 furniturePane.add(fu1);
 	 
 	 fu2 = new JButton(new ImageIcon("src/couch.jfif"));
-	 fu2.setSize(100,100);
 	 fu2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu2.setBackground(Color.WHITE);
 	 furniturePane.add(fu2);
 	 
 	 fu3 = new JButton(new ImageIcon("src/table.jfif"));
-	 fu3.setSize(100,100);
 	 fu3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu3.setBackground(Color.WHITE);
 	 furniturePane.add(fu3);
@@ -360,19 +427,16 @@ public class BestSellers {
 		 
 	 // icon 
 	 j1 = new JButton(new ImageIcon("src/silverheartnecklace.jfif"));
-	 j1.setSize(100,100);
 	 j1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j1.setBackground(Color.WHITE);
 	 jewelryPane.add(j1);
 	 
 	 j2 = new JButton(new ImageIcon("src/assortedrings.jfif"));
-	 j2.setSize(100,100);
 	 j2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j2.setBackground(Color.WHITE);
 	 jewelryPane.add(j2);
 	 
 	 j3 = new JButton(new ImageIcon("src/bracelet.jfif"));
-	 j3.setSize(100,100);
 	 j3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j3.setBackground(Color.WHITE);
 	 jewelryPane.add(j3);
@@ -418,19 +482,16 @@ public class BestSellers {
 		 
 	 // icon 
 	 k1 = new JButton(new ImageIcon("src/heartdishes.jfif"));
-	 k1.setSize(100,100);
 	 k1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k1.setBackground(Color.WHITE);
 	 kitchenPane.add(k1);
 	 
 	 k2 = new JButton(new ImageIcon("src/teaset.jfif"));
-	 k2.setSize(100,100);
 	 k2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k2.setBackground(Color.WHITE);
 	 kitchenPane.add(k2);
 	 
 	 k3 = new JButton(new ImageIcon("src/heartricecooker.jfif"));
-	 k3.setSize(100,100);
 	 k3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k3.setBackground(Color.WHITE);
 	 kitchenPane.add(k3);
@@ -476,19 +537,16 @@ public class BestSellers {
 		 
 	 // icon 
 	 sc1 = new JButton(new ImageIcon("src/faceroller.jfif"));
-	 sc1.setSize(100,100);
 	 sc1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc1.setBackground(Color.WHITE);
 	 skinPane.add(sc1);
 	 
 	 sc2 = new JButton(new ImageIcon("src/facemask.jfif"));
-	 sc2.setSize(100,100);
 	 sc2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc2.setBackground(Color.WHITE);
 	 skinPane.add(sc2);
 	 
 	 sc3 = new JButton(new ImageIcon("src/minifridge.jfif"));
-	 sc3.setSize(100,100);
 	 sc3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc3.setBackground(Color.WHITE);
 	 skinPane.add(sc3);
@@ -536,19 +594,16 @@ public class BestSellers {
 		 
 	 // icon 
 	 s1 = new JButton(new ImageIcon("src/dinopencils.jfif"));
-	 s1.setSize(100,100);
 	 s1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 s1.setBackground(Color.WHITE);
 	 stationaryPane.add(s1);
 	 
 	 s2 = new JButton(new ImageIcon("src/pencilcase.jfif"));
-	 s2.setSize(100,100);
 	 s2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 s2.setBackground(Color.WHITE);
 	 stationaryPane.add(s2);
 	 
 	 s3 = new JButton(new ImageIcon("src/eraserpens.jfif"));
-	 s3.setSize(100,100);
 	 s3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc3.setBackground(Color.WHITE);
 	 stationaryPane.add(s3);
@@ -602,6 +657,5 @@ public class BestSellers {
 				runGUI();
 			}
 		});
-
 	}
 }
