@@ -1,5 +1,3 @@
-package onlineStore;
-
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -14,10 +12,11 @@ public class ItemList {
 	public static ArrayList<Item1> electronics = new ArrayList<Item1>();
 	public static ArrayList<Item1> fitness = new ArrayList<Item1>();
 	public static ArrayList<Item1> kitchen = new ArrayList<Item1>();
+	public static ArrayList<Item1> bs = new ArrayList<Item1>();
 	
 	public ItemList() {
 		//Stationary
-		Item1 Pencils = new Item1("Pencils",new ImageIcon("Item1 pics/Pencils.jpg").getImage(),10,"Stationary","coming soon");
+		Item1 Pencils = new Item1("Pencils",new ImageIcon("itemPics/Pencils.jpg").getImage(),10,"Stationary","coming soon");
 		Item1 EraserPens = new Item1("Eraser Pens (4 Pack)", new ImageIcon("Item1 pics/EraserPens.jpg").getImage(),15,"Stationary","Coming soon");
 		Item1 PencilCase = new Item1("PencilCase", new ImageIcon("Item1 pics/PencilCase.jpg").getImage(),20,"Stationary","Coming soon");
 		Item1 GelPens = new Item1("Gel Pens (6 Pack)", new ImageIcon("Item1 pics/GelPens.jpg").getImage(),15,"Stationary","Coming soon");
@@ -39,7 +38,7 @@ public class ItemList {
 		Item1 ButterflyEarrings = new Item1("Butterfly Earrings", new ImageIcon("Item1 pics/ButterflyEarrings.jpg").getImage(),15,"Jewelry","Coming soon");
 		Item1 SaturnNecklace = new Item1("Saturn Necklace", new ImageIcon("Item1 pics/SaturnNecklace.jpg").getImage(),20,"Jewelry","Coming soon");
 		Item1 GreenAndPinkRings = new Item1("Green and Pink Rings", new ImageIcon("Item1 pics/GreenAndPinkRings.jpg").getImage(),15,"Jewelry","Coming soon");
-		Item1 BlueCropTop = new Item1("Blue Crop Top (Women)", new ImageIcon("Item1 pics/BlueCropTop.jpg").getImage(),20,"Clothes","Coming soon");
+		Item1 BlueCropTop = new Item1("Blue Crop Top (Women)", new ImageIcon("itemPics/BlueCropTop.jpg").getImage(),20,"Clothes","Coming soon");
 		Item1 NatureShirtPack = new Item1("Nature Shirt Pack (Unisex)", new ImageIcon("Item1 pics/NatureShirtPack.jpg").getImage(),30,"Clothes","Coming soon");
 		Item1 WhiteQuarterZip = new Item1("WhiteQuarterZip (Mens)", new ImageIcon("Item1 pics/WhiteQuarterZip.jpg").getImage(),30,"Clothes","Coming soon");
 		Item1 BrownCargoPants = new Item1("BrownCargoPants", new ImageIcon("Item1 pics/BrownCargoPants.jpg").getImage(),50,"Clothes","Coming soon");
@@ -130,6 +129,32 @@ public class ItemList {
 		ItemList.add(HeartRiceCooker);
 		ItemList.add(KitchenContainers);
 		ItemList.add(CasseroleDish);
+		bs.add(BlueCropTop);
+		bs.add(NatureShirtPack);
+		bs.add(WhiteQuarterZip);
+		bs.add(FloralAirpodCase);
+		bs.add(Headphones);
+		bs.add(IphoneCase);
+		bs.add(ResistanceBands);
+		bs.add(MotivationalWaterBottle);
+		bs.add(MatchingActiveSet);
+		bs.add(DeskLamp);
+		bs.add(ComfyLoungeChair);
+		bs.add(ClearNightstand);
+		bs.add(SilverHeartNecklace);
+		bs.add(AssortedRings);
+		bs.add(PearlHeartBracelet);
+		bs.add(HeartSauceDishes);
+		bs.add(CeramicTeaSet);
+		bs.add(HeartRiceCooker);
+		bs.add(QuartzFaceRoller);
+		bs.add(FaceMaskSet);
+		bs.add(MiniSkincareFridge);
+		bs.add(Pencils);
+		bs.add(PencilCase);
+		bs.add(EraserPens);
+		
+		
 		
 		for(Item1 i : ItemList) {
 			if(i.getDepartment().equals("Clothes")) {
@@ -208,7 +233,7 @@ public class ItemList {
 		
 	}
 	
-	public Item1 getItem1(String name) {
+	public static Item1 getItem1(String name) {
 		for(int i=0; i<ItemList.size();i++) {
 			if(ItemList.get(i).getName()==name);
 				return ItemList.get(i);
@@ -217,7 +242,3 @@ public class ItemList {
 	}
 	
 }
-		
-	
-	
-
