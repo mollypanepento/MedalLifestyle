@@ -28,7 +28,7 @@ public class Item1 implements ActionListener{
 	private Box horizontalBox; 
 	ImageIcon tempEmptyHeart = new ImageIcon("src/emptyHeart.png");
 	Image imgEmptyHeart = tempEmptyHeart.getImage();
-	Image newimg = imgEmptyHeart.getScaledInstance(100, 50,  java.awt.Image.SCALE_SMOOTH);
+	Image newimg = imgEmptyHeart.getScaledInstance(70, 50,  java.awt.Image.SCALE_SMOOTH);
 	ImageIcon emptyHeart = new ImageIcon(newimg);
 	ImageIcon tempHeart = new ImageIcon("src/heart.PNG"); 
 	Image imgHeart = tempHeart.getImage();
@@ -49,10 +49,10 @@ public class Item1 implements ActionListener{
 		pane.setBackground(Color.WHITE);
 		
 		imageLabel = new JLabel();
-		Image tempImg1 = this.getImg();
-		Image newimg = imgEmptyHeart.getScaledInstance(100, 50,  java.awt.Image.SCALE_SMOOTH);
+		Image newimg = imgEmptyHeart.getScaledInstance(70, 50,  java.awt.Image.SCALE_SMOOTH);
 		ImageIcon emptyHeart = new ImageIcon(newimg);
 		imageLabel.setIcon(new ImageIcon(this.getImg()));
+		imageLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
 		pane.add(imageLabel);
 		
 		itemButton = new JButton(name);
@@ -65,10 +65,10 @@ public class Item1 implements ActionListener{
 		
 		
 		wish = new JButton();
-		wish.setSize(100, 50);
+		//wish.setSize(100, 50);
 		wish.setIcon(emptyHeart);
 		wish.setForeground(Color.white);
-		wish.setText("empty");
+		wish.setText("empt");
 		wish.setContentAreaFilled(false);
 		wish.setBorderPainted(false);
 		wish.addActionListener(this);
@@ -128,14 +128,14 @@ public class Item1 implements ActionListener{
 	
 	public void actionPerformed(ActionEvent event) {
 		String eventName = event.getActionCommand();
-		  if (eventName.equals("empty")) {
+		  if (eventName.equals("empt")) {
 			wish.setIcon(heart);
 			wish.setText("fill");
 			// method to add to wish list 
 		}
 		  else if(eventName.equals("fill")) {
 			  wish.setIcon(emptyHeart);
-			  wish.setText("empty");
+			  wish.setText("empt");
 			  // method to remove from wish list 
 		  }
 		  else if(eventName.equals(name)) {
@@ -147,10 +147,6 @@ public class Item1 implements ActionListener{
 		
 	        
 	}
-	
-	
-	
-	
 	
 
 }
