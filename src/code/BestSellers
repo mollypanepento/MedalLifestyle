@@ -104,25 +104,31 @@ public class BestSellers {
 		 }
 	 });
 	 
-	 c2 = new JButton(new ImageIcon("src/unisexshirts-nature.jfif"));
+	 c2 = new JButton(new ImageIcon(it.bs.get(1).getImg()));
 	 c2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 c2.setBackground(Color.WHITE);
 	 clothesPane.add(c2);
 	 c2.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Nature Shirt Pack (Unisex)"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Nature Shirt Pack (Unisex)"));
 		 }
 	 });
 	  
-	 c3 = new JButton(new ImageIcon("src/menssweater.jfif"));
+	 c3 = new JButton(new ImageIcon(it.bs.get(2).getImg()));
 	 c3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 c3.setBackground(Color.WHITE);
 	 clothesPane.add(c3);
 	 c3.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("White Quarter Zip (Mens)"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("White Quarter Zip (Mens)"));
 		 }
 	 });
 	 
@@ -142,34 +148,34 @@ public class BestSellers {
 	 ws.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 	 ws.setBackground(Color.WHITE);
 	 cbuttonPane.add(ws);
-	 ws.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+//	 ws.addActionListener(new ActionListener() {
+//		 public void actionPerformed(ActionEvent ae) {
+//			 frame.dispose();
+//			 //new page
+//		 }
+//	 });
 	 
 	 JButton us = new JButton("Nature Shirt Pack (Unisex)");
 	 us.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 	 us.setBackground(Color.WHITE);
 	 cbuttonPane.add(us);
-	 us.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+//	 us.addActionListener(new ActionListener() {
+//		 public void actionPerformed(ActionEvent ae) {
+//			 frame.dispose();
+//			 //new page
+//		 }
+//	 });
 	 
 	 JButton ms = new JButton("White Quarter Zip (Mens)");
 	 ms.setBorder(BorderFactory.createEmptyBorder(20, 30, 20, 30));
 	 ms.setBackground(Color.WHITE);
 	 cbuttonPane.add(ms);
-	 ms.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+//	 ms.addActionListener(new ActionListener() {
+//		 public void actionPerformed(ActionEvent ae) {
+//			 frame.dispose();
+//			 //new page
+//		 }
+//	 });
 	 
 	 
 	 
@@ -188,36 +194,45 @@ public class BestSellers {
 	 electronicPane.add(eheart);
 		 
 	 // icon 
-	 e1 = new JButton(new ImageIcon("src/airpodcase.jfif"));
+	 e1 = new JButton(new ImageIcon(it.bs.get(3).getImg()));
 	 e1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e1.setBackground(Color.WHITE);
 	 electronicPane.add(e1);
 	 e1.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Floral Airpod Case"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Floral Airpod Case"));
 		 }
 	 });
 	 
-	 e2 = new JButton(new ImageIcon("src/headphones2.jfif"));
+	 e2 = new JButton(new ImageIcon(it.bs.get(4).getImg()));
 	 e2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e2.setBackground(Color.WHITE);
 	 electronicPane.add(e2);
 	 e2.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Headphones"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Headphones"));
 		 }
 	 });
 	 
-	 e3 = new JButton(new ImageIcon("src/iphonecase.jfif"));
+	 e3 = new JButton(new ImageIcon(it.bs.get(5).getImg()));
 	 e3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 e3.setBackground(Color.WHITE);
 	 electronicPane.add(e3);
 	 e3.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("iPhone Case"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("iPhone Case"));
 		 }
 	 });
 	 
@@ -236,34 +251,18 @@ public class BestSellers {
 		 air.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 air.setBackground(Color.WHITE);
 		 ebuttonPane.add(air);
-		 air.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent ae) {
-				 frame.dispose();
-				 //new page
-			 }
-		 });
+
 		 
 		 JButton hp = new JButton("Headphones");
 		 hp.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 hp.setBackground(Color.WHITE);
 		 ebuttonPane.add(hp);
-		 hp.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent ae) {
-				 frame.dispose();
-				 //new page
-			 }
-		 });
 		 
 		 JButton pc = new JButton("iPhone Case");
 		 pc.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		 pc.setBackground(Color.WHITE);
 		 ebuttonPane.add(pc);
-		 pc.addActionListener(new ActionListener() {
-			 public void actionPerformed(ActionEvent ae) {
-				 frame.dispose();
-				 //new page
-			 }
-		 });
+		 
 	 
 	 
 	 /* fitness */
@@ -280,36 +279,45 @@ public class BestSellers {
 	 fitnessPane.add(fheart);
 		 
 	 // icon 
-	 f1 = new JButton(new ImageIcon("src/resistancebands.jfif"));
+	 f1 = new JButton(new ImageIcon(it.bs.get(6).getImg()));
 	 f1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f1.setBackground(Color.WHITE);
 	 fitnessPane.add(f1);
 	 f1.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Resistance Bands"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Resistance Bands"));
 		 }
 	 });
 	 
-	 f2 = new JButton(new ImageIcon("src/motivationalbottle.jfif"));
+	 f2 = new JButton(new ImageIcon(it.bs.get(7).getImg()));
 	 f2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f2.setBackground(Color.WHITE);
 	 fitnessPane.add(f2);
 	 f2.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Motivational Water Bottle"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Motivational Water Bottle"));
 		 }
 	 });
 	 
-	 f3 = new JButton(new ImageIcon("src/matchingset.jfif"));
+	 f3 = new JButton(new ImageIcon(it.bs.get(8).getImg()));
 	 f3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 f3.setBackground(Color.WHITE);
 	 fitnessPane.add(f3);
 	 f3.addActionListener(new ActionListener() {
 		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Matching Active Set"));
+			 frame.getContentPane().add(i.showItemPage());
 			 frame.dispose();
-			 //new page
+			 new ItemPage1(ItemList.getItem1("Matching Active Set"));
 		 }
 	 });
 	 
@@ -327,34 +335,19 @@ public class BestSellers {
 	rb.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	rb.setBackground(Color.WHITE);
 	fbuttonPane.add(rb);
-	rb.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+	
 		 
 	JButton mb = new JButton("Motivational Water Bottle");
 	mb.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	mb.setBackground(Color.WHITE);
 	fbuttonPane.add(mb);
-	mb.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+	
 		 
 	JButton set = new JButton("Matching Active Set");
 	set.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 	set.setBackground(Color.WHITE);
 	fbuttonPane.add(set);
-	set.addActionListener(new ActionListener() {
-		 public void actionPerformed(ActionEvent ae) {
-			 frame.dispose();
-			 //new page
-		 }
-	 });
+	
 	 
 	 
 	 /* furniture */
@@ -371,20 +364,47 @@ public class BestSellers {
 	 furniturePane.add(fuheart);
 		 
 	 // icon 
-	 fu1 = new JButton(new ImageIcon("src/lamp.jfif"));
+	 fu1 = new JButton(new ImageIcon(it.bs.get(9).getImg()));
 	 fu1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu1.setBackground(Color.WHITE);
 	 furniturePane.add(fu1);
+	 fu1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Desk Lamp"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Desk Lamp"));
+		 }
+	 });
 	 
-	 fu2 = new JButton(new ImageIcon("src/couch.jfif"));
+	 fu2 = new JButton(new ImageIcon(it.bs.get(10).getImg()));
 	 fu2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu2.setBackground(Color.WHITE);
 	 furniturePane.add(fu2);
+	 fu2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Comfy Lounge Chair"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Comfy Lounge Chair"));
+		 }
+	 });
 	 
-	 fu3 = new JButton(new ImageIcon("src/table.jfif"));
+	 fu3 = new JButton(new ImageIcon(it.bs.get(11).getImg()));
 	 fu3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 fu3.setBackground(Color.WHITE);
 	 furniturePane.add(fu3);
+	 fu3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("v"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Clear Nightstand"));
+		 }
+	 });
 	 
 	//button labels
 		JPanel fubuttonPane = new JPanel();
@@ -426,20 +446,47 @@ public class BestSellers {
 	 jewelryPane.add(jheart);
 		 
 	 // icon 
-	 j1 = new JButton(new ImageIcon("src/silverheartnecklace.jfif"));
+	 j1 = new JButton(new ImageIcon(it.bs.get(12).getImg()));
 	 j1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j1.setBackground(Color.WHITE);
 	 jewelryPane.add(j1);
+	 j1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Silver Heart Necklace"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Silver Heart Necklace"));
+		 }
+	 });
 	 
-	 j2 = new JButton(new ImageIcon("src/assortedrings.jfif"));
+	 j2 = new JButton(new ImageIcon(it.bs.get(13).getImg()));
 	 j2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j2.setBackground(Color.WHITE);
 	 jewelryPane.add(j2);
+	 j2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Assorted Rings"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Assorted Rings"));
+		 }
+	 });
 	 
-	 j3 = new JButton(new ImageIcon("src/bracelet.jfif"));
+	 j3 = new JButton(new ImageIcon(it.bs.get(14).getImg()));
 	 j3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 j3.setBackground(Color.WHITE);
 	 jewelryPane.add(j3);
+	 j3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("v"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Pearl Heart Bracelet"));
+		 }
+	 });
 	 
 	//button labels
 		JPanel jbuttonPane = new JPanel();
@@ -481,20 +528,47 @@ public class BestSellers {
 	 kitchenPane.add(kheart);
 		 
 	 // icon 
-	 k1 = new JButton(new ImageIcon("src/heartdishes.jfif"));
+	 k1 = new JButton(new ImageIcon(it.bs.get(15).getImg()));
 	 k1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k1.setBackground(Color.WHITE);
 	 kitchenPane.add(k1);
+	 k1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Heart Sauce Dishes"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Heart Sauce Dishes"));
+		 }
+	 });
 	 
-	 k2 = new JButton(new ImageIcon("src/teaset.jfif"));
+	 k2 = new JButton(new ImageIcon(it.bs.get(16).getImg()));
 	 k2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k2.setBackground(Color.WHITE);
 	 kitchenPane.add(k2);
+	 k2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Ceramic Tea Set"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Ceramic Tea Set"));
+		 }
+	 });
 	 
-	 k3 = new JButton(new ImageIcon("src/heartricecooker.jfif"));
+	 k3 = new JButton(new ImageIcon(it.bs.get(17).getImg()));
 	 k3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 k3.setBackground(Color.WHITE);
 	 kitchenPane.add(k3);
+	 k3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Heart Rice Cooker"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Heart Rice Cooker"));
+		 }
+	 });
 	 
 	//button labels
 		JPanel kbuttonPane = new JPanel();
@@ -536,20 +610,47 @@ public class BestSellers {
 	 skinPane.add(scheart);
 		 
 	 // icon 
-	 sc1 = new JButton(new ImageIcon("src/faceroller.jfif"));
+	 sc1 = new JButton(new ImageIcon(it.bs.get(18).getImg()));
 	 sc1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc1.setBackground(Color.WHITE);
 	 skinPane.add(sc1);
+	 sc1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Quartz Face Roller"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Quartz Face Roller"));
+		 }
+	 });
 	 
-	 sc2 = new JButton(new ImageIcon("src/facemask.jfif"));
+	 sc2 = new JButton(new ImageIcon(it.bs.get(19).getImg()));
 	 sc2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc2.setBackground(Color.WHITE);
 	 skinPane.add(sc2);
+	 sc2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Face Mask Set"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Face Mask Set"));
+		 }
+	 });
 	 
-	 sc3 = new JButton(new ImageIcon("src/minifridge.jfif"));
+	 sc3 = new JButton(new ImageIcon(it.bs.get(20).getImg()));
 	 sc3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc3.setBackground(Color.WHITE);
 	 skinPane.add(sc3);
+	 sc3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Mini Skincare Fridge"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Mini Skincare Fridge"));
+		 }
+	 });
 	 
 	 //button label
 		JPanel scbuttonPane = new JPanel();
@@ -593,20 +694,47 @@ public class BestSellers {
 	 stationaryPane.add(sheart);
 		 
 	 // icon 
-	 s1 = new JButton(new ImageIcon("src/dinopencils.jfif"));
+	 s1 = new JButton(new ImageIcon(it.bs.get(21).getImg()));
 	 s1.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 s1.setBackground(Color.WHITE);
 	 stationaryPane.add(s1);
+	 s1.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Pencils"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Pencils"));
+		 }
+	 });
 	 
-	 s2 = new JButton(new ImageIcon("src/pencilcase.jfif"));
+	 s2 = new JButton(new ImageIcon(it.bs.get(22).getImg()));
 	 s2.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 s2.setBackground(Color.WHITE);
 	 stationaryPane.add(s2);
+	 s2.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Pencil Case"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Pencil Case"));
+		 }
+	 });
 	 
-	 s3 = new JButton(new ImageIcon("src/eraserpens.jfif"));
+	 s3 = new JButton(new ImageIcon(it.bs.get(23).getImg()));
 	 s3.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 15));
 	 sc3.setBackground(Color.WHITE);
 	 stationaryPane.add(s3);
+	 s3.addActionListener(new ActionListener() {
+		 public void actionPerformed(ActionEvent ae) {
+			 frame.getContentPane().removeAll(); 
+			 ItemPage1 i = new ItemPage1(ItemList.getItem1("Eraser Pens (4 Pack)"));
+			 frame.getContentPane().add(i.showItemPage());
+			 frame.dispose();
+			 new ItemPage1(ItemList.getItem1("Eraser Pens (4 Pack)"));
+		 }
+	 });
 	 
 	 //button label
 		JPanel sbuttonPane = new JPanel();
@@ -632,6 +760,8 @@ public class BestSellers {
 		ep.setBorder(BorderFactory.createEmptyBorder(20, 30, 10, 30));
 		ep.setBackground(Color.WHITE);
 		sbuttonPane.add(ep);
+		
+		
 	 
 	 
 	 
