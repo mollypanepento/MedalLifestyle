@@ -45,8 +45,31 @@ public class Store1 extends JPanel implements ActionListener {
 		sortPane.setBackground(Color.white);
 		bigPane = new JPanel();
 		bigPane.setBackground(Color.white);
-		JPanel head = h.createHeader();
+		String dept = " ";
+		if(department.get(0).getDepartment().contentEquals("Clothes")) {
+			dept = "Clothes";
+		}else if(department.get(0).getDepartment().contentEquals("Electronics")) {
+			dept = "Electronics";
+		}else if(department.get(0).getDepartment().contentEquals("Fitness")) {
+			dept = "Fitness";
+		}else if(department.get(0).getDepartment().contentEquals("Furniture")) {
+			dept = "Furniture";
+		}else if(department.get(0).getDepartment().contentEquals("Jewelry")) {
+			dept = "Jewelry";
+		}else if(department.get(0).getDepartment().contentEquals("Kitchen")) {
+			dept = "Kitchen";
+		}else if(department.get(0).getDepartment().contentEquals("Skin Care")) {
+			dept = "Skin Care";
+		}else if(department.get(0).getDepartment().contentEquals("Stationary")) {
+			dept = "Stationary";
+		}
+		
+		//JPanel head = h.createHeader(itemList.getDept());
+		h = new Header();
+		head = h.createHeader(dept);
 		head.setPreferredSize(new Dimension(1600,150));
+
+		bigPane.add(head);
 
 		bigPane.add(head);
 		bigPane.add(new JLabel(department.get(0).getDepartment()));
@@ -99,15 +122,20 @@ public class Store1 extends JPanel implements ActionListener {
 		sortedItemPane = new JPanel(new GridLayout(0, 3));
 		sortedItemPane.setBackground(Color.white);
 		
+		//create scrollbar
+        JScrollPane scrollbar = new JScrollPane(contentPane,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollbar.setWheelScrollingEnabled(true);
+        scrollbar.getVerticalScrollBar().setUnitIncrement(20);
+		
 		contentPane.add(itemPane);
-		bigPane.add(contentPane);
-		/* Add content pane to frame */
-		frame.setContentPane(bigPane);
-		 
-		/* Size and then display the frame. */
-		frame.pack();
-		frame.setSize(1600, 900);
-		frame.setVisible(true);
+		bigPane.add(scrollbar);
+		//add content pane to frame
+				Header.frame.setContentPane(bigPane);
+						
+				//Size and then display the frame
+				Header.frame.pack();
+				Header.frame.setVisible(true);
+				Header.frame.setSize(1600,900);
 	}
 	
 
