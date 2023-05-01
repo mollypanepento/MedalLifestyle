@@ -24,6 +24,7 @@ public class Header{
 	JButton logo, clothes, electronics, fitness, furniture, jewelry, kitchen, skinCare, stationary;
 	JButton submit, wishlist, purchase, cart;
 	Color lavender = new Color(183,189,231);
+	static User person = new User();
 	
 	public Header() {
 		//frame = new JFrame("Header");
@@ -120,6 +121,13 @@ public class Header{
 				 //create cart button
 				 cart = new JButton(new ImageIcon("src/cartSmall.png"));
 				 cart.setBackground(lavender);
+				 cart.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ae) {
+								//frame.dispose();
+								new CartDisplay(new Cart());
+								
+							}
+					});
 				 smallPane.add(cart);
 				 
 				 
@@ -434,6 +442,10 @@ public class Header{
 			  submit.setBackground(lavender);
 		  }
 		return contentPane;
+	}
+	
+	public static User getUser() {
+		return person;
 	}
 
 	
