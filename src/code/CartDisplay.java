@@ -32,16 +32,10 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	private Cart cart;
 	private LinkedHashMap <BasicArrowButton, Item> incAmtButtons = new LinkedHashMap <BasicArrowButton, Item>();
 	private LinkedHashMap <BasicArrowButton, Item> decAmtButtons = new LinkedHashMap <BasicArrowButton, Item>();
-	private LinkedHashMap <ImageIcon, Item> deleteImages = new LinkedHashMap <ImageIcon, Item>();
 	private LinkedHashMap <JButton, Item> removeButtons = new LinkedHashMap <JButton, Item>();
 	private Color medalDarkPurple = new Color(115,118,236);
 	private Color medalPurple = new Color(203, 205, 247);
 	private Color medalPink = new Color(255,204,194);
-//	private Image trashImg = new ImageIcon("src/medal/trash.png").getImage();
-	
-//	private ArrayList<JButton> = new ArrayList<JButton>;
-//	private BasicArrowButton incAmtBtn, decAmtBtn;
-//	this.addMouseListener(this);
 	
 	public CartDisplay(Cart cart) {
 		this.cart = cart;
@@ -96,7 +90,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 			  
 		}
 		
-		System.out.println("deleteImages hashmap size: " + deleteImages.size());
+		
 		System.out.println("incAmtButtons hashmap size: " + incAmtButtons.size());
 	
 	}
@@ -190,6 +184,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
        increment = 0;
        for (JButton button: removeButtons.keySet()) {
        		button.setBounds(710, 145+increment*150, 30, 30);
+       		button.setSelected(false);
        		increment++;
     		
        	}  
@@ -292,13 +287,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 			}
 		}
 		
-		for (ImageIcon img: deleteImages.keySet()) {		
-			if (e.equals(img) ) {
-				System.out.println("image clicked");
-				cart.removeItem(deleteImages.get(img));
-				repaint();
-			}
-		} 
+	
 		
 		for (JButton button: removeButtons.keySet()) {		
 			if (e.getSource().equals(button)) {
@@ -311,6 +300,8 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 				removeIncButton(item);
 				removeDecButton(item);
 				repaint();
+				
+				break;
 			}
 		}
 	}
