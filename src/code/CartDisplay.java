@@ -15,8 +15,11 @@ import java.awt.geom.Rectangle2D.Double;
 import java.awt.geom.RoundRectangle2D;
 import java.text.NumberFormat;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
+import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -30,6 +33,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	private LinkedHashMap <BasicArrowButton, Item> incAmtButtons = new LinkedHashMap <BasicArrowButton, Item>();
 	private LinkedHashMap <BasicArrowButton, Item> decAmtButtons = new LinkedHashMap <BasicArrowButton, Item>();
 	private LinkedHashMap <ImageIcon, Item> deleteImages = new LinkedHashMap <ImageIcon, Item>();
+	private LinkedHashMap <JButton, Item> removeButtons = new LinkedHashMap <JButton, Item>();
 	private Color medalDarkPurple = new Color(115,118,236);
 	private Color medalPurple = new Color(203, 205, 247);
 	private Color medalPink = new Color(255,204,194);
@@ -57,14 +61,39 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 			dec.addActionListener(this);
 			this.add(dec);
 			
-			ImageIcon trashImage = new ImageIcon("src/medal/trash.png");
-			
+//trash instantiation
+			ImageIcon trashIcon = null;
+			  try {
+				 ImageIcon oldTrashIcon = new ImageIcon("src/medal/trash.png");
+				 Image img = oldTrashIcon.getImage();
+				 Image newImg = img.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
+//			    Image img = new Image("src/medal/trash.png");
+				 trashIcon = new ImageIcon(newImg);
+				 
+			   
+			  } catch (Exception ex) {
+			    System.out.println(ex);
+			  }
+//			ImageIcon trashImage = new ImageIcon("src/medal/trash.png");
+//			JButton trash = new JButton(trashImage);
+			  
+			 
+			  JButton trash = new JButton(trashIcon);
+			  trash.setIcon(trashIcon);
+			  trash.setOpaque(false);
+			  trash.setContentAreaFilled(false);
+			  trash.setBorderPainted(false);
+//			    trash.setDisabledIcon(trashIcon);
+//			    trash.setEnabled(false);
+			  trash.addActionListener(this);
+			this.add(trash);
 //			this.add(trashLabel);
 			
 			  incAmtButtons.put(inc, i);
 			  decAmtButtons.put(dec, i);
-			  deleteImages.put(trashImage, i);
-				
+//			  deleteImages.put(trashImage, i);
+			  removeButtons.put(trash, i);
+			  
 		}
 		
 		System.out.println("deleteImages hashmap size: " + deleteImages.size());
@@ -72,13 +101,52 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	
 	}
 	
+	public void removeIncButton(Item item) {
+		  Iterator<Map.Entry<BasicArrowButton, Item> >
+          iterator = incAmtButtons.entrySet().iterator();
+
+      // Iterate over the HashMap
+      while (iterator.hasNext()) {
+
+          // Get the entry at this iteration
+          Map.Entry<BasicArrowButton, Item>
+              entry
+              = iterator.next();
+
+          // Check if this value is the required value
+          if (item.equals(entry.getValue())) {
+
+              // Remove this entry from HashMap
+              iterator.remove();
+          }
+      }
+	}
+	
+	public void removeDecButton(Item item) {
+		  Iterator<Map.Entry<BasicArrowButton, Item> >
+        iterator = decAmtButtons.entrySet().iterator();
+
+    // Iterate over the HashMap
+    while (iterator.hasNext()) {
+
+        // Get the entry at this iteration
+        Map.Entry<BasicArrowButton, Item>
+            entry
+            = iterator.next();
+
+        // Check if this value is the required value
+        if (item.equals(entry.getValue())) {
+
+            // Remove this entry from HashMap
+            iterator.remove();
+        }
+    }
+	}
+	
 	public void paintComponent(Graphics g) {
 		
 		
-//		 deleteBars = new RoundRectangle2D[WishList.size()];
-//		addBars = new RoundRectangle2D[WishList.size()];
-//		fillList(deleteBars);
-//		fillList(addBars);
+
        super.paintComponent(g);
        Graphics2D g2d = (Graphics2D) g;
    
@@ -116,14 +184,15 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
     	   increment++;
        }
        
+       
+       
+//draw all of the trash buttons
        increment = 0;
-       for (ImageIcon img: deleteImages.keySet()) {
-    	   g2d.drawImage(img.getImage(), 730, 140+increment*150, 20, 20, null);
+       for (JButton button: removeButtons.keySet()) {
+       		button.setBounds(710, 145+increment*150, 30, 30);
        		increment++;
     		
-       	}
-       
-       
+       	}  
        //draw all of the increase amount buttons
        increment = 0;
        for (BasicArrowButton button: incAmtButtons.keySet()) {
@@ -173,26 +242,6 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		
-		   
-		// TODO Auto-generated method stub
-//		 if ((e.getButton() == 1) && trashImg.contains(e.getX(), e.getY()) trashImg. ) {
-//			   ItemList.sortByPriceLowToHigh(WishList);
-//		   }
-		
-		for (ImageIcon img: deleteImages.keySet()) {		
-			if (e.equals(img) ) {
-				System.out.println("image clicked");
-				cart.removeItem(deleteImages.get(img));
-				repaint();
-			}
-		} 
-
-	
-			 
-//			if(e.getComponent().equals(button)) {
-//				Item item = incAmtButtons.
-//				cart.incQuantityBy1(item);
-//			}
 		
 	}
 
@@ -250,5 +299,19 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 				repaint();
 			}
 		} 
+		
+		for (JButton button: removeButtons.keySet()) {		
+			if (e.getSource().equals(button)) {
+				Item item = removeButtons.get(button);
+				System.out.println(item.getName());
+				//remove item from cart
+				cart.removeItem(item);
+				//remove corresponding buttons from cart display
+				removeButtons.remove(button);
+				removeIncButton(item);
+				removeDecButton(item);
+				repaint();
+			}
+		}
 	}
 }
