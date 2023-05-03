@@ -2,6 +2,7 @@ package medal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 import javax.swing.ImageIcon;
 
@@ -64,7 +65,7 @@ public class Cart {
 	Item CasseroleDish= new Item("Casserole Dish", new ImageIcon("Item pics/CasseroleDish.jpg").getImage(),30,"Kitchen","Coming soon");
 	Item ToasterOven= new Item("Toaster Oven", new ImageIcon("Item pics/ToasterOven.jpg").getImage(),50,"Kitchen","Coming soon");
 
-	HashMap <Item, Integer> cartItems = new HashMap <Item, Integer>();
+	LinkedHashMap <Item, Integer> cartItems = new LinkedHashMap <Item, Integer>();
 	public Cart() {
 		ItemList.add(Pencils);
 		ItemList.add(EraserPens);
@@ -135,6 +136,10 @@ public class Cart {
 		cartItems.put(item, amt);
 	}
 	
+	public void removeItem(Item item) {
+		cartItems.remove(item);
+	}
+	
 	public void setQuantity(Item item, Integer amt) { //is this the way to go
 		cartItems.put(item,amt);
 	}
@@ -147,7 +152,7 @@ public class Cart {
 		cartItems.put(item, cartItems.get(item)-1);
 	}
 	
-	public HashMap<Item, Integer> getItemsMap() {
+	public LinkedHashMap<Item, Integer> getItemsMap() {
 		return cartItems;
 	}
 	
