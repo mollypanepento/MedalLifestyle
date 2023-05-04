@@ -74,6 +74,17 @@ public class Header{
 				 submit.setBorder(BorderFactory.createEmptyBorder(5,10,5, 10));
 				 //submit.addActionListener(this);
 				 smallPane.add(submit);
+				 submit.addActionListener(new ActionListener() {
+						public void actionPerformed(ActionEvent ae) {
+							for(Item1 i : ItemList.getItem(search.getText())){
+								System.out.println(i.getName());
+							}
+							
+							SearchPage.searchList = ItemList.getItem(search.getText());
+							frame.dispose();
+							new SearchPage();
+						}
+					});
 				 
 				 //create signIn button
 				 wishlist = new JButton("Wishlist");
