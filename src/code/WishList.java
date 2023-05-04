@@ -49,10 +49,11 @@ public class WishList extends JPanel implements MouseListener {
     
      
     
-    public static ArrayList<Item> WishList = new ArrayList<Item>();
+    public static ArrayList<Item> WishList;
     private JButton b;
     
 	public WishList() {
+	WishList = Header.person.getWishList();
 		//bigPane
 		JPanel bigPane = new JPanel();
 		bigPane.setLayout(new GridBagLayout());
