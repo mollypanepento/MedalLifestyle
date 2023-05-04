@@ -14,12 +14,12 @@ public class ItemPage1 extends JPanel implements ActionListener{
 	String value = "1";
 	JPanel contentPane, bigPane, buyPane; 
 	Header h = new Header(); 
-	JLabel name, image, price, description;
+	JLabel name, image, price, quantity, description;
 	JButton addCart, wish, back;
-	JComboBox quantity; 
+	JComboBox<String> quantityBox; 
 	ImageIcon tempEmptyHeart = new ImageIcon("src/emptyHeart.png");
 	Image imgEmptyHeart = tempEmptyHeart.getImage();
-	Image newimg = imgEmptyHeart.getScaledInstance(100, 50,  java.awt.Image.SCALE_SMOOTH);
+	Image newimg = imgEmptyHeart.getScaledInstance(70, 50,  java.awt.Image.SCALE_SMOOTH);
 	ImageIcon emptyHeart = new ImageIcon(newimg);
 	ItemList itemList = new ItemList(); 
 	ImageIcon tempHeart = new ImageIcon("src/heart.PNG"); 
@@ -42,26 +42,44 @@ public class ItemPage1 extends JPanel implements ActionListener{
 		
 		image = new JLabel();
 		Image tempImg = i.getImg();
-		Image newImg = tempImg.getScaledInstance(300, 250,  java.awt.Image.SCALE_SMOOTH);
+		Image newImg = tempImg.getScaledInstance(500, 450,  java.awt.Image.SCALE_SMOOTH);
 		image.setIcon(new ImageIcon(newImg));
 		contentPane.add(image);
+		contentPane.add(Box.createRigidArea(new Dimension(100, 20)));
 		
 		buyPane = new JPanel();
+		buyPane.setBackground(Color.white);
+		buyPane.setLayout(new BoxLayout(buyPane, BoxLayout.PAGE_AXIS));
 		name = new JLabel(i.getName());
+		name.setFont(new Font("Arial", Font.PLAIN, 25));
 		buyPane.add(name);
+		buyPane.add(Box.createRigidArea(new Dimension(0, 40)));
 		price = new JLabel("$"+i.getPrice());
+		price.setFont(new Font("Arial", Font.PLAIN, 25));
 		cost = i.getPrice();
 		buyPane.add(price);
-		String q[]= {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
-		quantity = new JComboBox(q);
-		quantity.setSize(200, quantity.getPreferredSize().height);
-		quantity.addActionListener(this);
+		buyPane.add(Box.createRigidArea(new Dimension(0, 40)));
+		quantity = new JLabel("Quantity");
+		quantity.setFont(new Font("Arial", Font.PLAIN, 20));
 		buyPane.add(quantity);
+		String q[]= {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+		quantityBox = new JComboBox<String>(q);
+		quantityBox.setPrototypeDisplayValue("quantity");
+		quantityBox.addActionListener(this);
+		buyPane.add(quantityBox);
+		buyPane.add(Box.createRigidArea(new Dimension(0, 20)));
 		addCart = new JButton("Add to Cart");
+		addCart.setPreferredSize(new Dimension(60, 40));
+		addCart.setHorizontalAlignment(JButton.CENTER);
+		addCart.setBackground(Color.black);
+		addCart.setForeground(Color.white);
 		addCart.addActionListener(this);
+		buyPane.add(Box.createRigidArea(new Dimension(0, 40)));
 		buyPane.add(addCart);
 		
+		
 		wish = new JButton();
+		wish.setHorizontalAlignment(JButton.CENTER);
 		wish.setSize(100, 50);
 		//wish.setText("hi");
 		wish.setIcon(emptyHeart);
@@ -71,17 +89,19 @@ public class ItemPage1 extends JPanel implements ActionListener{
 		wish.setBorderPainted(false);
 		wish.addActionListener(this);
 		buyPane.add(wish);
+		buyPane.add(Box.createRigidArea(new Dimension(0, 40)));
+		back = new JButton("Go Back"); 
 		
+		back.addActionListener(this);
+		buyPane.add(back);
 		contentPane.add(buyPane);
 		
-		back = new JButton("Go Back"); 
-		back.addActionListener(this);
-		contentPane.add(back);
+		
 		
 		bigPane = new JPanel(); 
 		bigPane.setLayout(new BoxLayout(bigPane, BoxLayout.PAGE_AXIS));
 		bigPane.setBackground(Color.white);
-		bigPane.add(h.createHeader());
+
 //		image = i.getImg();
 //		image.setPreferredSize(new Dimension(300, 500));
 //		bigPane.add(image);
@@ -94,16 +114,13 @@ public class ItemPage1 extends JPanel implements ActionListener{
 		frameItemPage.setVisible(true);
 		frameItemPage.setSize(1600, 900);
 	}
-	private static void runGUI() {
-		 JFrame.setDefaultLookAndFeelDecorated(true);
-		 ItemPage1 c = new ItemPage1(ItemList.electronics.get(2));
-	 }
+
 	public JPanel showItemPage() {
 		return this.bigPane; 
 	}
 	public void actionPerformed(ActionEvent event) {
 		String eventName = event.getActionCommand();
-		String value = (String) quantity.getSelectedItem();
+		String value = (String) quantityBox.getSelectedItem();
 		  if (eventName.equals("empty")) {
 			wish.setIcon(heart);
 			wish.setText("fill");
@@ -124,7 +141,7 @@ public class ItemPage1 extends JPanel implements ActionListener{
 		  else if(eventName.equals("Go Back")) {
 			  System.out.println("Back clicked");
 			  String department = item1.getDepartment();
-//FIGURE OUT HOW TO USE VARIABLE TO CALL STATIC DEPARTMENT LISTS
+			  System.out.println(ItemList.findList(department));
 			  Store1 s = new Store1(ItemList.findList(department));
 			  System.out.println(ItemList.clothes.size());
 		  }
@@ -141,7 +158,10 @@ public class ItemPage1 extends JPanel implements ActionListener{
   
        }
 
-
+	private static void runGUI() {
+		 JFrame.setDefaultLookAndFeelDecorated(true);
+		 ItemPage1 c = new ItemPage1(ItemList.clothes.get(2));
+	 }
 	 public static void main(String[] args) {
 	 /* Methods that create and show a GUI should be run from an event-dispatching thread */
 		 javax.swing.SwingUtilities.invokeLater(new Runnable() {
