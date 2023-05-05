@@ -4,16 +4,16 @@ import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 
 public class ItemPage1 extends JPanel implements ActionListener{
-	public JFrame frameItemPage;
+
+	private static final long serialVersionUID = 1L;
+	public static JFrame frame;
 	double cost; 
 	String value = "1";
 	JPanel contentPane, bigPane, buyPane; 
-	Header h = new Header(); 
+	Header h;
 	JLabel name, image, price, quantity, description;
 	JButton addCart, wish, back;
 	JComboBox<String> quantityBox; 
@@ -28,16 +28,17 @@ public class ItemPage1 extends JPanel implements ActionListener{
 	ImageIcon heart = new ImageIcon(newimg1);
 	Item1 item1; 
 	ItemList i = new ItemList(); 
-	private static final JViewport viewport = new JViewport(); 
-	//https://www.youtube.com/watch?v=Yw0p7tTFAoc
-	public ItemPage1(Item1 i) {
-		item1 = i; 
-		frameItemPage= new JFrame("Clothes");
-		frameItemPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frameItemPage.setBackground(Color.white);
 
+	public ItemPage1(Item1 i) {
+		item1 = i;
+//		frame = new JFrame("Medal LifeStyle");
+		Header.frame.setBackground(Color.white);
+		Header.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Header.frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+		Header.frame.setUndecorated(true);
+		Header.frame.setTitle("Medal Lifestyle");
+		
 		contentPane = new JPanel(); 
-		//contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.PAGE_AXIS));
 		contentPane.setBackground(Color.white);
 		
 		image = new JLabel();
@@ -101,18 +102,26 @@ public class ItemPage1 extends JPanel implements ActionListener{
 		bigPane = new JPanel(); 
 		bigPane.setLayout(new BoxLayout(bigPane, BoxLayout.PAGE_AXIS));
 		bigPane.setBackground(Color.white);
-
-//		image = i.getImg();
-//		image.setPreferredSize(new Dimension(300, 500));
-//		bigPane.add(image);
+		
+		GridBagConstraints c4 = new GridBagConstraints();
+		JPanel head = new JPanel();
+		head.setPreferredSize(new Dimension(1600,50));
+		h = new Header();
+		head = h.createHeader("");
+		c4.fill = GridBagConstraints.HORIZONTAL;
+		c4.ipady = 20;
+		c4.weightx = 0.5;
+		c4.gridwidth = 6;
+		c4.gridx = 0;
+		c4.gridy = 0;
+		bigPane.add(head, c4);
 		
 		bigPane.add(contentPane);
-		frameItemPage.setContentPane(bigPane);
+		Header.frame.setContentPane(bigPane);
 		 
-		/* Size and then display the frameItemPage. */
-		frameItemPage.pack();
-		frameItemPage.setVisible(true);
-		frameItemPage.setSize(1600, 900);
+		Header.frame.pack();
+		Header.frame.setVisible(true);
+		Header.frame.setSize(1600, 900);
 	}
 
 	public JPanel showItemPage() {
@@ -149,14 +158,14 @@ public class ItemPage1 extends JPanel implements ActionListener{
 	
 		
 	}	
-	public void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        Graphics2D g2d = (Graphics2D) g;
-        //this.addActionListener(this);
-        ImageObserver io = null;
-        g2d.drawImage(item1.getImg(),430,60+150,100,100,null);
-  
-       }
+//	public void paintComponent(Graphics g) {
+//        super.paintComponent(g);
+//        Graphics2D g2d = (Graphics2D) g;
+//        //this.addActionListener(this);
+//        ImageObserver io = null;
+//        g2d.drawImage(item1.getImg(),430,60+150,100,100,null);
+//  
+//       }
 
 	private static void runGUI() {
 		 JFrame.setDefaultLookAndFeelDecorated(true);
