@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
@@ -56,27 +57,25 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 			this.add(dec);
 			
 //trash instantiation
-			ImageIcon trashIcon = null;
-			  try {
+		
+			
 				 ImageIcon oldTrashIcon = new ImageIcon("src/medal/trash.png");
 				 Image img = oldTrashIcon.getImage();
 				 Image newImg = img.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
 //			    Image img = new Image("src/medal/trash.png");
-				 trashIcon = new ImageIcon(newImg);
+				 ImageIcon trashIcon = new ImageIcon(newImg);
 				 
 			   
-			  } catch (Exception ex) {
-			    System.out.println(ex);
-			  }
+			  
 //			ImageIcon trashImage = new ImageIcon("src/medal/trash.png");
 //			JButton trash = new JButton(trashImage);
 			  
 			 
 			  JButton trash = new JButton(trashIcon);
 			  trash.setIcon(trashIcon);
-			  trash.setOpaque(false);
-			  trash.setContentAreaFilled(false);
-			  trash.setBorderPainted(false);
+//			  trash.setOpaque(false);
+//			  trash.setContentAreaFilled(false);
+//			  trash.setBorderPainted(false);
 //			    trash.setDisabledIcon(trashIcon);
 //			    trash.setEnabled(false);
 			  trash.addActionListener(this);
@@ -92,6 +91,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 		
 		
 		System.out.println("incAmtButtons hashmap size: " + incAmtButtons.size());
+		System.out.println("cart size: " + cart.getItemsMap().size());
 	
 	}
 	
@@ -292,7 +292,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 		for (JButton button: removeButtons.keySet()) {		
 			if (e.getSource().equals(button)) {
 				Item item = removeButtons.get(button);
-				System.out.println(item.getName());
+//				System.out.println(item.getName());
 				//remove item from cart
 				cart.removeItem(item);
 				//remove corresponding buttons from cart display
@@ -300,6 +300,28 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 				removeIncButton(item);
 				removeDecButton(item);
 				repaint();
+				System.out.println("-----cartItems");
+				for (Map.Entry<Item, Integer> entry : cart.getItemsMap().entrySet()) {
+				      System.out.println(entry.getKey().getName() + ": " + entry.getValue());
+				    }
+				System.out.println("-----incAmtButtons");
+				for (Map.Entry<BasicArrowButton, Item> entry : incAmtButtons.entrySet()) {
+				      System.out.println(entry.getKey().getName() + ": " + entry.getValue().getName());
+				    }
+				System.out.println("-----decAmtButtons");
+				for (Map.Entry<BasicArrowButton, Item> entry : decAmtButtons.entrySet()) {
+				      System.out.println(entry.getKey().getName() + ": " + entry.getValue().getName());
+				    }
+				
+				System.out.println("-----removeButtons");
+				for (Entry<JButton, Item> entry : removeButtons.entrySet()) {
+				      System.out.println(entry.getKey().getName() + ": " + entry.getValue().getName());
+				    }
+				System.out.println("cart size: " + cart.getItemsMap().size());
+				System.out.println("incAmtButtons hashmap size: " + incAmtButtons.size());
+				System.out.println("decAmtButtons hashmap size: " + decAmtButtons.size());
+				System.out.println("removeButtons hashmap size: " + removeButtons.size());
+				System.out.println("----------------------------");
 				
 				break;
 			}
