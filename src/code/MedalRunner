@@ -1,0 +1,58 @@
+package medal;
+
+import java.awt.Dimension;
+
+import javax.swing.BoxLayout;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+public class MedalRunner {
+	private static Cart cart = new Cart();
+//	private static CartDisplay cartDisplay = new CartDisplay(cart);
+	private static ItemList itemList = new ItemList();
+	
+	
+	
+	public static void main(String[]args)
+	{
+//		cart.addItem(itemList.getItem("Skin Care Kit"), );
+	//Create a JPanel
+	JPanel panel=new JPanel();
+	panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+	CartDisplay cartDisplay = new CartDisplay(cart);
+	//Create cart items
+		panel.add(cartDisplay);
+		
+		panel.setPreferredSize(new Dimension(1600, 10000));
+		
+	//Create a scrollbar using JScrollPane and add panel into it's viewport
+	//Set vertical and horizontal scrollbar always show
+	JScrollPane scrollBar=new JScrollPane(panel,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+
+	//Create a JFrame with title ( AddScrollBarToJFrame )
+	JFrame frame=new JFrame("Cart");
+	
+	
+	
+	
+
+	//Add JScrollPane into JFrame
+	frame.add(scrollBar);
+
+	//Set close operation for JFrame
+	frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+	
+
+
+	//Set JFrame size
+	frame.setExtendedState(JFrame.MAXIMIZED_BOTH); 
+
+	//Make JFrame visible. So we can see it.
+	frame.setVisible(true);
+
+	//So, if you want to add other component like JTextArea, just add them into JPanel.After that add
+	//the JPanel into JScrollPane before add the JScrollPane into JFrame.
+	}		
+}
