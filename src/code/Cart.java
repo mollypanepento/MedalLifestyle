@@ -2,9 +2,12 @@ package medal;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.swing.ImageIcon;
+import javax.swing.plaf.basic.BasicArrowButton;
 
 public class Cart {
 	public static ArrayList<Item> ItemList = new ArrayList<Item>();
@@ -137,7 +140,25 @@ public class Cart {
 	}
 	
 	public void removeItem(Item item) {
-		cartItems.remove(item);
+		
+		Iterator<Map.Entry<Item, Integer> >
+        iterator = cartItems.entrySet().iterator();
+
+	    // Iterate over the HashMap
+	    while (iterator.hasNext()) {
+	
+	        // Get the entry at this iteration
+	        Map.Entry<Item, Integer>
+	            entry
+	            = iterator.next();
+	
+	        // Check if this value is the required value
+	        if (item.equals(entry.getKey())) {
+	
+	            // Remove this entry from HashMap
+	            iterator.remove();
+	        }
+	    }
 	}
 	
 	public void setQuantity(Item item, Integer amt) { //is this the way to go
