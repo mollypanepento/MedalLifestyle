@@ -1,77 +1,79 @@
+package onlineStore;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 
 import javax.swing.ImageIcon;
-public class ItemListLauren {
-	public static ArrayList<Item> ItemList = new ArrayList<Item>();
-	public static ArrayList<Item> stationary = new ArrayList<Item>();
-	public static ArrayList<Item> furniture = new ArrayList<Item>();
-	public static ArrayList<Item> skincare = new ArrayList<Item>();
-	public static ArrayList<Item> jewelry = new ArrayList<Item>();
-	public static ArrayList<Item> clothes = new ArrayList<Item>();
-	public static ArrayList<Item> electronics = new ArrayList<Item>();
-	public static ArrayList<Item> fitness = new ArrayList<Item>();
-	public static ArrayList<Item> kitchen = new ArrayList<Item>();
+public class ItemList {
+	public static final ArrayList<Item1> ItemList = new ArrayList<Item1>();
+	public static final ArrayList<Item1> stationary = new ArrayList<Item1>();
+	public static final ArrayList<Item1> furniture = new ArrayList<Item1>();
+	public static final ArrayList<Item1> skincare = new ArrayList<Item1>();
+	public static final ArrayList<Item1> jewelry = new ArrayList<Item1>();
+	public static final ArrayList<Item1> clothes = new ArrayList<Item1>();
+	public static final ArrayList<Item1> electronics = new ArrayList<Item1>();
+	public static final ArrayList<Item1> fitness = new ArrayList<Item1>();
+	public static final ArrayList<Item1> kitchen = new ArrayList<Item1>();
+	public static final ArrayList<Item1> bestSellers = new ArrayList<Item1>();
 	
-	public ItemListLauren() {
+	public ItemList() {
 		//Stationary
-		Item Pencils = new Item("Pencils",new ImageIcon("Item pics/Pencils.jpg").getImage(),10,"Stationary","coming soon");
-		Item EraserPens = new Item("Eraser Pens (4 Pack)", new ImageIcon("Item pics/EraserPens.jpg").getImage(),15,"Stationary","Coming soon");
-		Item PencilCase = new Item("PencilCase", new ImageIcon("Item pics/PencilCase.jpg").getImage(),20,"Stationary","Coming soon");
-		Item GelPens = new Item("Gel Pens (6 Pack)", new ImageIcon("Item pics/GelPens.jpg").getImage(),15,"Stationary","Coming soon");
-		Item AestheticNotepads = new Item("AestheticNotepads", new ImageIcon("Item pics/AestheticNotepads.jpg").getImage(),20,"Stationary","Coming soon");
-		Item WashiTape = new Item("Multi-patter Washi Tape (5 Pack)", new ImageIcon("Item pics/WashiTape.jpg").getImage(),15,"Stationary","Coming soon");
-		Item DeskLamp = new Item("DeskLamp", new ImageIcon("Item pics/DeskLamp.jpg").getImage(),25,"Furniture","Coming soon");
-		Item ComfyLoungeChair = new Item("Comfy Lounge Chair", new ImageIcon("Item pics/ComfyLoungeChair.jpg").getImage(),45,"Furniture","Coming soon");
-		Item ClearNightstand = new Item("Clear Nightstand", new ImageIcon("Item pics/ClearNightstand.jpg").getImage(),50,"Furniture","Coming soon");
-		Item HangingPlant = new Item("HangingPLant", new ImageIcon("Item pics/HangingPlant.jpg").getImage(),20,"Furniture","Coming soon");
-		Item Candles = new Item("Candles (3 pack)", new ImageIcon("Item pics/Candles.jpg").getImage(),20,"Furniture","Coming soon");
-		Item MakeupMirror = new Item("Makeup Mirror", new ImageIcon("Item pics/MakeupMirror.jpg").getImage(),30,"Furniture","Coming soon");
-		Item RomanNumeralClock = new Item("Roman Numer Clock (30 in.)", new ImageIcon("Item pics/RomanNumeralClock.jpg").getImage(),40,"Furniture","Coming soon");
-		Item CloudThrowPillow = new Item("Cloud Throw Pillow", new ImageIcon("Item pics/CloudThrowPillow.jpg").getImage(),10,"Furniture","Coming soon");
-		Item HandTuftedCarpet = new Item("Hand Tufted Carpet (8x10 ft)", new ImageIcon("Item pics/HandTuftedCarpet.jpg").getImage(),50,"Furniture","Coming soon");
-		Item DrawerCabinet = new Item("6 Drawer Cabinet", new ImageIcon("Item pics/6DrawerCabinet.jpg").getImage(),50,"Furniture","Coming soon");
-		Item SilverHeartNecklace = new Item("Silver Heart Necklace", new ImageIcon("Item pics/SilverHeartNecklace.jpg").getImage(),15,"Jewelry","Coming soon");
-		Item AssortedRings = new Item("Assorted Rings", new ImageIcon("Item pics/AssortedRings.jpg").getImage(),20,"Jewelry","Coming soon");
-		Item PearlHeartBracelet = new Item("Pearl Heart Bracelet", new ImageIcon("Item pics/PearlHeartBracelet.jpg").getImage(),10,"Jewelry","Coming soon");
-		Item ButterflyEarrings = new Item("Butterfly Earrings", new ImageIcon("Item pics/ButterflyEarrings.jpg").getImage(),15,"Jewelry","Coming soon");
-		Item SaturnNecklace = new Item("Saturn Necklace", new ImageIcon("Item pics/SaturnNecklace.jpg").getImage(),20,"Jewelry","Coming soon");
-		Item GreenAndPinkRings = new Item("Green and Pink Rings", new ImageIcon("Item pics/GreenAndPinkRings.jpg").getImage(),15,"Jewelry","Coming soon");
-		Item BlueCropTop = new Item("Blue Crop Top (Women)", new ImageIcon("Item pics/BlueCropTop.jpg").getImage(),20,"Clothes","Coming soon");
-		Item NatureShirtPack = new Item("Nature Shirt Pack (Unisex)", new ImageIcon("Item pics/NatureShirtPack.jpg").getImage(),30,"Clothes","Coming soon");
-		Item WhiteQuarterZip = new Item("WhiteQuarterZip (Mens)", new ImageIcon("Item pics/WhiteQuarterZip.jpg").getImage(),30,"Clothes","Coming soon");
-		Item BrownCargoPants = new Item("BrownCargoPants", new ImageIcon("Item pics/BrownCargoPants.jpg").getImage(),50,"Clothes","Coming soon");
-		Item GreenSweater = new Item("Green Sweater", new ImageIcon("Item pics/GreenSweater.jpg").getImage(),45,"Clothes","Coming soon");
-		Item FloralMaxiSkirt = new Item("Floral Maxi Skirt", new ImageIcon("Item pics/FloralMaxiSkirt.jpg").getImage(),35,"Clothes","Coming soon");
-		Item GreenCargoPants = new Item("Green Cargo Pants (Mens)", new ImageIcon("Item pics/GreenCargoPants.jpg").getImage(),20,"Clothes","Coming soon");
-		Item StripedSweater = new Item("StripedSweater (Mens)", new ImageIcon("Item pics/StripedSweater.jpg").getImage(),30,"Clothes","Coming soon");
-		Item BlackOversizedSweatshirt = new Item("Black Oversized Sweatshirt (Unisex)", new ImageIcon("Item pics/BlackOversizedSweatshirt.jpg").getImage(),30,"Clothes","Coming soon");
-		Item LongSleevedStar = new Item("Long Sleeved Star", new ImageIcon("Item pics/LongSleevedStar.jpg").getImage(),10,"Clothes","Coming soon");
-		Item Headphones = new Item("Headphones", new ImageIcon("Item pics/Headphones.jpg").getImage(),40,"Electronics","Coming soon");
-		Item FloralAirpodCase = new Item("Floral Airpod Case", new ImageIcon("Item pics/FloralAirpodCase.jpg").getImage(),20,"Electronics","Coming soon");
-		Item IphoneCase = new Item("iPhone Case", new ImageIcon("Item pics/IphoneCase.jpg").getImage(),15,"Electronics","Coming soon");
-		Item ComputerSleeve = new Item("Computer Sleeve", new ImageIcon("Item pics/ComputerSleeve.jpg").getImage(),30,"Electronics","Coming soon");
-		Item IpadCase = new Item("Ipad Case", new ImageIcon("Item pics/IpadCase.jpg").getImage(),45,"Electronics","Coming soon");
-		Item RetroDigitalCamera = new Item("Retro Digital Camera", new ImageIcon("Item pics/RetroDigitalCamera.jpg").getImage(),35,"Fitness","Coming soon");
-		Item ResistanceBands = new Item("Resistance Bands", new ImageIcon("Item pics/ResistanceBands.jpg").getImage(),20,"Fitness","Coming soon");
-		Item ReusableWaterBottles = new Item("Reusable Water Bottles", new ImageIcon("Item pics/ReusableWaterBottles.jpg").getImage(),20,"Fitness","Coming soon");
-		Item Weights = new Item("6lb Weights", new ImageIcon("Item pics/6lbWeights.jpg").getImage(),15,"Fitness","Coming soon");
-		Item MotivationalWaterBottle = new Item("Motivational Water Bottle", new ImageIcon("Item pics/MotivationalWaterBottle.jpg").getImage(),30,"Fitness","Coming soon");
-		Item LilacYogaMat = new Item("Lilac Yoga Mat", new ImageIcon("Item pics/LilacYogaMat.jpg").getImage(),30,"Fitness","Coming soon");
-		Item MatchingActiveSet = new Item("MatchingActiveSet", new ImageIcon("Item pics/MatchingActiveSet.jpg").getImage(),55,"Fitness","Coming soon");
-		Item QuartzFaceRoller = new Item("QuartzFaceRoller", new ImageIcon("Item pics/QuartzFaceRoller.jpg").getImage(),15,"Skin Care","Coming soon");
-		Item MiniSkincareFridge = new Item("Mini Skincare Fridge", new ImageIcon("Item pics/MiniSkincareFridge.jpg").getImage(),30,"Skin Care","Coming soon");
-		Item FaceMaskSet = new Item("Face Mask Set", new ImageIcon("Item pics/FaceMaskSet.jpg").getImage(),20,"Skin Care","Coming soon");
-		Item MakeupBag = new Item("Makeup Bag", new ImageIcon("Item pics/MakeupBag.jpg").getImage(),20,"Skin Care","Coming soon");
-		Item AvocadoFaceMask = new Item("Avocado Face Mask", new ImageIcon("Item pics/AvocadoFaceMask.jpg").getImage(),30,"Skin Care","Coming soon");
-		Item SkinCareKit = new Item("Skin Care Kit", new ImageIcon("Item pics/SkinCareKit.jpg").getImage(),35,"Skin Care","Coming soon");
-		Item HeartSauceDishes = new Item("HeartSauceDishes", new ImageIcon("Item pics/HeartSauceDishes.jpg").getImage(),15,"Kitchen","Coming soon");
-		Item CeramicTeaSet = new Item("CeramicTeaSet", new ImageIcon("Item pics/CeramicTeaSet.jpg").getImage(),30,"Kitchen","Coming soon");
-		Item HeartRiceCooker = new Item("Heart Rice Cooker", new ImageIcon("Item pics/HeartRiceCooker.jpg").getImage(),15,"Kitchen","Coming soon");
-		Item KitchenContainers = new Item("Kitchen Containers", new ImageIcon("Item pics/KitchenContainers.jpg").getImage(),20,"Kitchen","Coming soon");
-		Item CasseroleDish= new Item("Casserole Dish", new ImageIcon("Item pics/CasseroleDish.jpg").getImage(),30,"Kitchen","Coming soon");
-		Item ToasterOven= new Item("Toaster Oven", new ImageIcon("Item pics/ToasterOven.jpg").getImage(),50,"Kitchen","Coming soon");
+		Item1 Pencils = new Item1("Pencils",new ImageIcon("Item1 pics/Pencils.jpg").getImage(),10,"Stationary","coming soon");
+		Item1 EraserPens = new Item1("Eraser Pens (4 Pack)", new ImageIcon("Item1 pics/EraserPens.jpg").getImage(),15,"Stationary","Coming soon");
+		Item1 PencilCase = new Item1("PencilCase", new ImageIcon("Item1 pics/PencilCase.jpg").getImage(),20,"Stationary","Coming soon");
+		Item1 GelPens = new Item1("Gel Pens (6 Pack)", new ImageIcon("Item1 pics/GelPens.jpg").getImage(),15,"Stationary","Coming soon");
+		Item1 AestheticNotepads = new Item1("AestheticNotepads", new ImageIcon("Item1 pics/AestheticNotepads.jpg").getImage(),20,"Stationary","Coming soon");
+		Item1 WashiTape = new Item1("Multi-patter Washi Tape (5 Pack)", new ImageIcon("Item1 pics/WashiTape.jpg").getImage(),15,"Stationary","Coming soon");
+		Item1 DeskLamp = new Item1("DeskLamp", new ImageIcon("Item1 pics/DeskLamp.jpg").getImage(),25,"Furniture","Coming soon");
+		Item1 ComfyLoungeChair = new Item1("Comfy Lounge Chair", new ImageIcon("Item1 pics/ComfyLoungeChair.jpg").getImage(),45,"Furniture","Coming soon");
+		Item1 ClearNightstand = new Item1("Clear Nightstand", new ImageIcon("Item1 pics/ClearNightstand.jpg").getImage(),50,"Furniture","Coming soon");
+		Item1 HangingPlant = new Item1("HangingPLant", new ImageIcon("Item1 pics/HangingPlant.jpg").getImage(),20,"Furniture","Coming soon");
+		Item1 Candles = new Item1("Candles (3 pack)", new ImageIcon("Item1 pics/Candles.jpg").getImage(),20,"Furniture","Coming soon");
+		Item1 MakeupMirror = new Item1("Makeup Mirror", new ImageIcon("Item1 pics/MakeupMirror.jpg").getImage(),30,"Furniture","Coming soon");
+		Item1 RomanNumeralClock = new Item1("Roman Numer Clock (30 in.)", new ImageIcon("Item1 pics/RomanNumeralClock.jpg").getImage(),40,"Furniture","Coming soon");
+		Item1 CloudThrowPillow = new Item1("Cloud Throw Pillow", new ImageIcon("Item1 pics/CloudThrowPillow.jpg").getImage(),10,"Furniture","Coming soon");
+		Item1 HandTuftedCarpet = new Item1("Hand Tufted Carpet (8x10 ft)", new ImageIcon("Item1 pics/HandTuftedCarpet.jpg").getImage(),50,"Furniture","Coming soon");
+		Item1 DrawerCabinet = new Item1("6 Drawer Cabinet", new ImageIcon("Item1 pics/6DrawerCabinet.jpg").getImage(),50,"Furniture","Coming soon");
+		Item1 SilverHeartNecklace = new Item1("Silver Heart Necklace", new ImageIcon("Item1 pics/SilverHeartNecklace.jpg").getImage(),15,"Jewelry","Coming soon");
+		Item1 AssortedRings = new Item1("Assorted Rings", new ImageIcon("Item1 pics/AssortedRings.jpg").getImage(),20,"Jewelry","Coming soon");
+		Item1 PearlHeartBracelet = new Item1("Pearl Heart Bracelet", new ImageIcon("Item1 pics/PearlHeartBracelet.jpg").getImage(),10,"Jewelry","Coming soon");
+		Item1 ButterflyEarrings = new Item1("Butterfly Earrings", new ImageIcon("Item1 pics/ButterflyEarrings.jpg").getImage(),15,"Jewelry","Coming soon");
+		Item1 SaturnNecklace = new Item1("Saturn Necklace", new ImageIcon("Item1 pics/SaturnNecklace.jpg").getImage(),20,"Jewelry","Coming soon");
+		Item1 GreenAndPinkRings = new Item1("Green and Pink Rings", new ImageIcon("Item1 pics/GreenAndPinkRings.jpg").getImage(),15,"Jewelry","Coming soon");
+		Item1 BlueCropTop = new Item1("Blue Crop Top (Women)", new ImageIcon("Item1 pics/BlueCropTop.jpg").getImage(),20,"Clothes","Coming soon");
+		Item1 NatureShirtPack = new Item1("Nature Shirt Pack (Unisex)", new ImageIcon("Item1 pics/NatureShirtPack.jpg").getImage(),30,"Clothes","Coming soon");
+		Item1 WhiteQuarterZip = new Item1("WhiteQuarterZip (Mens)", new ImageIcon("Item1 pics/WhiteQuarterZip.jpg").getImage(),30,"Clothes","Coming soon");
+		Item1 BrownCargoPants = new Item1("BrownCargoPants", new ImageIcon("Item1 pics/BrownCargoPants.jpg").getImage(),50,"Clothes","Coming soon");
+		Item1 GreenSweater = new Item1("Green Sweater", new ImageIcon("Item1 pics/GreenSweater.jpg").getImage(),45,"Clothes","Coming soon");
+		Item1 FloralMaxiSkirt = new Item1("Floral Maxi Skirt", new ImageIcon("Item1 pics/FloralMaxiSkirt.jpg").getImage(),35,"Clothes","Coming soon");
+		Item1 GreenCargoPants = new Item1("Green Cargo Pants (Mens)", new ImageIcon("Item1 pics/GreenCargoPants.jpg").getImage(),20,"Clothes","Coming soon");
+		Item1 StripedSweater = new Item1("StripedSweater (Mens)", new ImageIcon("Item1 pics/StripedSweater.jpg").getImage(),30,"Clothes","Coming soon");
+		Item1 BlackOversizedSweatshirt = new Item1("Black Oversized Sweatshirt (Unisex)", new ImageIcon("Item1 pics/BlackOversizedSweatshirt.jpg").getImage(),30,"Clothes","Coming soon");
+		Item1 LongSleevedStar = new Item1("Long Sleeved Star", new ImageIcon("Item1 pics/LongSleevedStar.jpg").getImage(),10,"Clothes","Coming soon");
+		Item1 Headphones = new Item1("Headphones", new ImageIcon("Item1 pics/Headphones.jpg").getImage(),40,"Electronics","Coming soon");
+		Item1 FloralAirpodCase = new Item1("Floral Airpod Case", new ImageIcon("Item1 pics/FloralAirpodCase.jpg").getImage(),20,"Electronics","Coming soon");
+		Item1 IphoneCase = new Item1("iPhone Case", new ImageIcon("Item1 pics/IphoneCase.jpg").getImage(),15,"Electronics","Coming soon");
+		Item1 ComputerSleeve = new Item1("Computer Sleeve", new ImageIcon("Item1 pics/ComputerSleeve.jpg").getImage(),30,"Electronics","Coming soon");
+		Item1 IpadCase = new Item1("Ipad Case", new ImageIcon("Item1 pics/IpadCase.jpg").getImage(),45,"Electronics","Coming soon");
+		Item1 RetroDigitalCamera = new Item1("Retro Digital Camera", new ImageIcon("Item1 pics/RetroDigitalCamera.jpg").getImage(),35,"Fitness","Coming soon");
+		Item1 ResistanceBands = new Item1("Resistance Bands", new ImageIcon("Item1 pics/ResistanceBands.jpg").getImage(),20,"Fitness","Coming soon");
+		Item1 ReusableWaterBottles = new Item1("Reusable Water Bottles", new ImageIcon("Item1 pics/ReusableWaterBottles.jpg").getImage(),20,"Fitness","Coming soon");
+		Item1 Weights = new Item1("6lb Weights", new ImageIcon("Item1 pics/6lbWeights.jpg").getImage(),15,"Fitness","Coming soon");
+		Item1 MotivationalWaterBottle = new Item1("Motivational Water Bottle", new ImageIcon("Item1 pics/MotivationalWaterBottle.jpg").getImage(),30,"Fitness","Coming soon");
+		Item1 LilacYogaMat = new Item1("Lilac Yoga Mat", new ImageIcon("Item1 pics/LilacYogaMat.jpg").getImage(),30,"Fitness","Coming soon");
+		Item1 MatchingActiveSet = new Item1("MatchingActiveSet", new ImageIcon("Item1 pics/MatchingActiveSet.jpg").getImage(),55,"Fitness","Coming soon");
+		Item1 QuartzFaceRoller = new Item1("QuartzFaceRoller", new ImageIcon("Item1 pics/QuartzFaceRoller.jpg").getImage(),15,"Skin Care","Coming soon");
+		Item1 MiniSkincareFridge = new Item1("Mini Skincare Fridge", new ImageIcon("Item1 pics/MiniSkincareFridge.jpg").getImage(),30,"Skin Care","Coming soon");
+		Item1 FaceMaskSet = new Item1("Face Mask Set", new ImageIcon("Item1 pics/FaceMaskSet.jpg").getImage(),20,"Skin Care","Coming soon");
+		Item1 MakeupBag = new Item1("Makeup Bag", new ImageIcon("Item1 pics/MakeupBag.jpg").getImage(),20,"Skin Care","Coming soon");
+		Item1 AvocadoFaceMask = new Item1("Avocado Face Mask", new ImageIcon("Item1 pics/AvocadoFaceMask.jpg").getImage(),30,"Skin Care","Coming soon");
+		Item1 SkinCareKit = new Item1("Skin Care Kit", new ImageIcon("Item1 pics/SkinCareKit.jpg").getImage(),35,"Skin Care","Coming soon");
+		Item1 HeartSauceDishes = new Item1("HeartSauceDishes", new ImageIcon("Item1 pics/HeartSauceDishes.jpg").getImage(),15,"Kitchen","Coming soon");
+		Item1 CeramicTeaSet = new Item1("CeramicTeaSet", new ImageIcon("Item1 pics/CeramicTeaSet.jpg").getImage(),30,"Kitchen","Coming soon");
+		Item1 HeartRiceCooker = new Item1("Heart Rice Cooker", new ImageIcon("Item1 pics/HeartRiceCooker.jpg").getImage(),15,"Kitchen","Coming soon");
+		Item1 KitchenContainers = new Item1("Kitchen Containers", new ImageIcon("Item1 pics/KitchenContainers.jpg").getImage(),20,"Kitchen","Coming soon");
+		Item1 CasseroleDish= new Item1("Casserole Dish", new ImageIcon("Item1 pics/CasseroleDish.jpg").getImage(),30,"Kitchen","Coming soon");
+		Item1 ToasterOven= new Item1("Toaster Oven", new ImageIcon("Item1 pics/ToasterOven.jpg").getImage(),50,"Kitchen","Coming soon");
 
 		
 		ItemList.add(Pencils);
@@ -131,55 +133,78 @@ public class ItemListLauren {
 		ItemList.add(CasseroleDish);
 		ItemList.add(ToasterOven);
 		
-		if(clothes.size()==0) {
-			for(Item i : ItemList) {
-				if(i.getDepartment().equals("Clothes")) {
-					clothes.add(i);
-				}else if(i.getDepartment().equals("Kitchen")) {
-					kitchen.add(i);
-				}else if(i.getDepartment().equals("Jewelry")) {
-					jewelry.add(i);
-				}else if(i.getDepartment().equals("Skin Care")) {
-					skincare.add(i);
-				}else if(i.getDepartment().equals("Fitness")) {
-					fitness.add(i);
-				}else if(i.getDepartment().equals("Furniture")) {
-					furniture.add(i);
-				}else if(i.getDepartment().equals("Stationary")) {
-					stationary.add(i);
-				}else if(i.getDepartment().equals("Electronics")) {
-					electronics.add(i);
-				}
+		bestSellers.add(BlueCropTop);
+		bestSellers.add(NatureShirtPack);
+		bestSellers.add(WhiteQuarterZip);
+		bestSellers.add(FloralAirpodCase);
+		bestSellers.add(Headphones);
+		bestSellers.add(IphoneCase);
+		bestSellers.add(ResistanceBands);
+		bestSellers.add(MotivationalWaterBottle);
+		bestSellers.add(MatchingActiveSet);
+		bestSellers.add(DeskLamp);
+		bestSellers.add(ComfyLoungeChair);
+		bestSellers.add(ClearNightstand);
+		bestSellers.add(SilverHeartNecklace);
+		bestSellers.add(AssortedRings);
+		bestSellers.add(PearlHeartBracelet);
+		bestSellers.add(HeartSauceDishes);
+		bestSellers.add(CeramicTeaSet);
+		bestSellers.add(HeartRiceCooker);
+		bestSellers.add(QuartzFaceRoller);
+		bestSellers.add(FaceMaskSet);
+		bestSellers.add(MiniSkincareFridge);
+		bestSellers.add(Pencils);
+		bestSellers.add(PencilCase);
+		bestSellers.add(EraserPens);
+		
+		
+		for(Item1 i : ItemList) {
+			if(i.getDepartment().equals("Clothes")) {
+				clothes.add(i);
+			}else if(i.getDepartment().equals("Kitchen")) {
+				kitchen.add(i);
+			}else if(i.getDepartment().equals("Jewelry")) {
+				jewelry.add(i);
+			}else if(i.getDepartment().equals("Skin Care")) {
+				skincare.add(i);
+			}else if(i.getDepartment().equals("Fitness")) {
+				fitness.add(i);
+			}else if(i.getDepartment().equals("Furniture")) {
+				furniture.add(i);
+			}else if(i.getDepartment().equals("Stationary")) {
+				stationary.add(i);
+			}else if(i.getDepartment().equals("Electronics")) {
+				electronics.add(i);
 			}
 		}
-		
 	}
 	
-//	public void add(Item Item) {
-//		ItemList.add(Item);
+//	public void add(Item1 Item1) {
+//		ItemList.add(Item1);
 //	}
-	public static void printList(ArrayList<Item> list) {
-		for(Item i: list) {
+	public static void printList(ArrayList<Item1> list) {
+		for(Item1 i: list) {
 			System.out.println(i.getName());
 		}
 	}
 	
 	//https://www.javatpoint.com/how-to-sort-arraylist-in-java
-	public static ArrayList<Item> sortLowPrice(ArrayList<Item> list){
-		ArrayList<Item> newList = new ArrayList<Item>(list);
+	public static ArrayList<Item1> sortLowPrice(ArrayList<Item1> list){
+		ArrayList<Item1> newList = new ArrayList<Item1>(list);
 		//printList(newList); 
-		newList.sort(Comparator.comparing(Item::getPrice));
+		newList.sort(Comparator.comparing(Item1::getPrice));
 		return newList; 
 	}
-	public static ArrayList<Item> sortHighPrice(ArrayList<Item> list){
-		ArrayList<Item> newList = new ArrayList<Item>(list);
-		newList.sort(Comparator.comparing(Item::getPrice).reversed());
+	public static ArrayList<Item1> sortHighPrice(ArrayList<Item1> list){
+		ArrayList<Item1> newList = new ArrayList<Item1>(list);
+		newList.sort(Comparator.comparing(Item1::getPrice).reversed());
 		return newList; 
 	}
-	public static ArrayList<Item> findList(String depot){
+	public static ArrayList<Item1> findList(String depot){
 		if(depot.equals("Clothes")) {
 			return clothes;
-		}else if(depot.equals("Kithen")) {
+		}else if(depot.equals("Kitchen")) {
 			return kitchen;
 		}else if(depot.equals("Jewelry")) {
 			return jewelry;
@@ -211,7 +236,7 @@ public class ItemListLauren {
 		
 	}
 	
-	public Item getItem(String name) {
+	public static Item1 getItem1(String name) {
 		for(int i=0; i<ItemList.size();i++) {
 			if(ItemList.get(i).getName()==name);
 				return ItemList.get(i);
@@ -223,3 +248,4 @@ public class ItemListLauren {
 		
 	
 	
+
