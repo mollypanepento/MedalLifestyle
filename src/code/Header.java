@@ -38,6 +38,8 @@ public class Header{
 				 
 				 /* Create a label that shows the logo */
 				 logo = new JButton(new ImageIcon("src/logoSmall.PNG"));
+				 logo.setBackground(lavender);
+				 logo.setBorder(null);
 				 logo.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent ae) {
 							//frame.dispose();
@@ -81,7 +83,7 @@ public class Header{
 							}
 							
 							SearchPage.searchList = ItemList.getItem(search.getText());
-							frame.dispose();
+							//frame.dispose();
 							new SearchPage();
 						}
 					});
@@ -136,7 +138,6 @@ public class Header{
 						public void actionPerformed(ActionEvent ae) {
 								//frame.dispose();
 								new CartDisplay(new Cart());
-								
 							}
 					});
 				 smallPane.add(cart);
