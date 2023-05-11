@@ -1,9 +1,12 @@
-package medal;
+
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.RenderingHints;
 import java.awt.event.ActionEvent;
@@ -21,9 +24,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -37,13 +42,15 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	private Color medalDarkPurple = new Color(115,118,236);
 	private Color medalPurple = new Color(203, 205, 247);
 	private Color medalPink = new Color(255,204,194);
+	private Header h;
+	private static RoundRectangle2D checkout = new RoundRectangle2D.Double(1010, 200, 350, 125, 50, 30);
 	
 	public CartDisplay(Cart cart) {
 		this.cart = cart;
 		this.setLayout(null);
 		
-		JLabel trashLabel = new JLabel(new ImageIcon("src/medal/trash.png"));
-		this.add(trashLabel);
+		JLabel trashLabel = new JLabel(new ImageIcon("trash.png"));
+		//this.add(trashLabel);
 		
 
 		//hash map of buttons
@@ -59,15 +66,15 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 //trash instantiation
 		
 			
-				 ImageIcon oldTrashIcon = new ImageIcon("src/medal/trash.png");
+				 ImageIcon oldTrashIcon = new ImageIcon("trash.png");
 				 Image img = oldTrashIcon.getImage();
 				 Image newImg = img.getScaledInstance(30, 30, java.awt.Image.SCALE_SMOOTH);
-//			    Image img = new Image("src/medal/trash.png");
+//			    Image img = new Image("trash.png");
 				 ImageIcon trashIcon = new ImageIcon(newImg);
 				 
 			   
 			  
-//			ImageIcon trashImage = new ImageIcon("src/medal/trash.png");
+//			ImageIcon trashImage = new ImageIcon("trash.png");
 //			JButton trash = new JButton(trashImage);
 			  
 			 
@@ -79,7 +86,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 //			    trash.setDisabledIcon(trashIcon);
 //			    trash.setEnabled(false);
 			  trash.addActionListener(this);
-			this.add(trash);
+			//this.add(trash);
 //			this.add(trashLabel);
 			
 			  incAmtButtons.put(inc, i);
@@ -87,6 +94,52 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 //			  deleteImages.put(trashImage, i);
 			  removeButtons.put(trash, i);
 			  
+			  //displaying on frame
+			  //Big pane
+			  GridBagConstraints c4 = new GridBagConstraints();
+			  JPanel bigPane = new JPanel();
+			  bigPane.setLayout(new GridBagLayout());
+				c4.fill = GridBagConstraints.HORIZONTAL;
+				
+				//header
+			  JPanel head = new JPanel();
+				h = new Header();
+				head = h.createHeader();
+				c4.fill = GridBagConstraints.HORIZONTAL;
+				c4.ipady = 20;
+				c4.weightx = 0.5;
+				c4.gridwidth = 6;
+				c4.gridx = 0;
+				c4.gridy = 0;
+				bigPane.add(head, c4);
+				
+				//Cart
+				this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+		        this.setBackground(Color.WHITE);
+		        this.setPreferredSize(new Dimension(1600, 10000));
+		        this.setBorder(BorderFactory.createEmptyBorder(20,20,20,20));
+		        
+		      //create scrollbar
+		        JScrollPane scrollbar = new JScrollPane(this,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+		        scrollbar.setWheelScrollingEnabled(true);
+		        scrollbar.getVerticalScrollBar().setUnitIncrement(20);
+			  
+		        c4.fill = GridBagConstraints.HORIZONTAL;
+				c4.ipady = 750;
+				c4.weightx = 0.5;
+				c4.gridwidth = 6;
+				c4.gridx = 0;
+				c4.gridy = 2;
+		        bigPane.add(scrollbar, c4);
+		        
+		        Header.frame = new JFrame();
+		        Header.frame.setTitle("Cart");
+		        Header.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		        Header.frame.setPreferredSize(new Dimension(1600, 900));
+		        Header.frame.setContentPane(bigPane);
+		        
+		        Header.frame.pack();
+		        Header.frame.setVisible(true);
 		}
 		
 		
@@ -139,9 +192,8 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	
 	public void paintComponent(Graphics g) {
 		
-		
-
        super.paintComponent(g);
+       this.addMouseListener(this);
        Graphics2D g2d = (Graphics2D) g;
    
        
@@ -169,7 +221,7 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
        int increment = 0;
        NumberFormat formatter = NumberFormat.getCurrencyInstance();
        for(Item i: cart.getItemsMap().keySet()) {
-    	   g2d.drawImage(i.getImg(), 430,60+increment*150,100,100, null);
+    	   g2d.drawImage(i.getImg(), 260,60+increment*150,100,100, null);
     	  
     	   
     	   g2d.drawString(i.getName(), 410, 80+increment*150);
@@ -219,10 +271,10 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
    	
    	//draw rectangle for going to checkout
    	g2d.setColor(medalPink);
-   	RoundRectangle2D roundRect = new RoundRectangle2D.Double(1010, 200, 350, 125, 50, 30);
-   	g2d.draw(roundRect);
-   	g2d.setColor(Color.white);
-   	g2d.fill(roundRect);
+   	
+   	g2d.draw(checkout);
+   	g2d.setColor(medalPink);
+   	g2d.fill(checkout);
    	
    	g2d.setColor(Color.black);
    	g2d.drawString("Checkout", 1010, 220);
@@ -236,8 +288,11 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
-		
+		if ((e.getButton() == 1) && checkout.contains(e.getX(), e.getY()) ) {
+			System.out.println("Checkout clicked");
+			   Header.frame.dispose();
+			   new Info();
+		   }
 	}
 
 	@Override
@@ -326,5 +381,18 @@ public class CartDisplay extends JPanel implements MouseListener, ActionListener
 				break;
 			}
 		}
+	}
+	private static void runGUI() {
+		JFrame.setDefaultLookAndFeelDecorated(true);
+		Cart cart = new Cart();
+		CartDisplay cartDisplay = new CartDisplay(cart);
+	}
+	public static void main(String[] args) {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				runGUI();
+			}
+		});
+
 	}
 }
